@@ -1,0 +1,114 @@
+[
+  {
+    "commodity_name": "Pulp",
+    "commodity_id": "COM-009",
+    "item_count": 222,
+    "avg_cost_index": 109.25,
+    "cost_volatility_pct": 30.06,
+    "impact_score": 315.43
+  },
+  {
+    "commodity_name": "Raw Materials",
+    "commodity_id": "COM-011",
+    "item_count": 196,
+    "avg_cost_index": 116.33,
+    "cost_volatility_pct": 27.01,
+    "impact_score": 289.58
+  },
+  {
+    "commodity_name": "Utilities",
+    "commodity_id": "COM-013",
+    "item_count": 219,
+    "avg_cost_index": 111.83,
+    "cost_volatility_pct": 15.42,
+    "impact_score": 282.69
+  },
+  {
+    "commodity_name": "Packaging",
+    "commodity_id": "COM-008",
+    "item_count": 239,
+    "avg_cost_index": 105.1,
+    "cost_volatility_pct": 7.11,
+    "impact_score": 269.04
+  },
+  {
+    "commodity_name": "Freight",
+    "commodity_id": "COM-004",
+    "item_count": 200,
+    "avg_cost_index": 112.92,
+    "cost_volatility_pct": 19.1,
+    "impact_score": 268.98
+  },
+  {
+    "commodity_name": "Resin",
+    "commodity_id": "COM-012",
+    "item_count": 225,
+    "avg_cost_index": 106.17,
+    "cost_volatility_pct": 11.58,
+    "impact_score": 266.54
+  },
+  {
+    "commodity_name": "Quality Testing",
+    "commodity_id": "COM-010",
+    "item_count": 224,
+    "avg_cost_index": 106.68,
+    "cost_volatility_pct": 11.21,
+    "impact_score": 265.75
+  },
+  {
+    "commodity_name": "Labor",
+    "commodity_id": "COM-006",
+    "item_count": 224,
+    "avg_cost_index": 105.18,
+    "cost_volatility_pct": 11.68,
+    "impact_score": 263.11
+  },
+  {
+    "commodity_name": "Fragrance",
+    "commodity_id": "COM-003",
+    "item_count": 229,
+    "avg_cost_index": 105.66,
+    "cost_volatility_pct": 7.51,
+    "impact_score": 260.14
+  },
+  {
+    "commodity_name": "Overhead",
+    "commodity_id": "COM-007",
+    "item_count": 229,
+    "avg_cost_index": 102.93,
+    "cost_volatility_pct": 4.2,
+    "impact_score": 245.61
+  },
+  {
+    "commodity_name": "Ingredients",
+    "commodity_id": "COM-005",
+    "item_count": 196,
+    "avg_cost_index": 106.75,
+    "cost_volatility_pct": 14.6,
+    "impact_score": 239.79
+  },
+  {
+    "commodity_name": "Warehousing",
+    "commodity_id": "COM-014",
+    "item_count": 202,
+    "avg_cost_index": 102.04,
+    "cost_volatility_pct": 6.09,
+    "impact_score": 218.67
+  },
+  {
+    "commodity_name": "Co-manufacturing",
+    "commodity_id": "COM-002",
+    "item_count": 202,
+    "avg_cost_index": 100.35,
+    "cost_volatility_pct": 3.64,
+    "impact_score": 210.09
+  },
+  {
+    "commodity_name": "Active Chemicals",
+    "commodity_id": "COM-001",
+    "item_count": 193,
+    "avg_cost_index": 102.94,
+    "cost_volatility_pct": 1.35,
+    "impact_score": 201.35
+  }
+]

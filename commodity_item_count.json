@@ -1,0 +1,72 @@
+[
+  {
+    "commodity_name": "Packaging",
+    "commodity_id": "COM-008",
+    "item_count": 239
+  },
+  {
+    "commodity_name": "Overhead",
+    "commodity_id": "COM-007",
+    "item_count": 229
+  },
+  {
+    "commodity_name": "Fragrance",
+    "commodity_id": "COM-003",
+    "item_count": 229
+  },
+  {
+    "commodity_name": "Resin",
+    "commodity_id": "COM-012",
+    "item_count": 225
+  },
+  {
+    "commodity_name": "Quality Testing",
+    "commodity_id": "COM-010",
+    "item_count": 224
+  },
+  {
+    "commodity_name": "Labor",
+    "commodity_id": "COM-006",
+    "item_count": 224
+  },
+  {
+    "commodity_name": "Pulp",
+    "commodity_id": "COM-009",
+    "item_count": 222
+  },
+  {
+    "commodity_name": "Utilities",
+    "commodity_id": "COM-013",
+    "item_count": 219
+  },
+  {
+    "commodity_name": "Warehousing",
+    "commodity_id": "COM-014",
+    "item_count": 202
+  },
+  {
+    "commodity_name": "Co-manufacturing",
+    "commodity_id": "COM-002",
+    "item_count": 202
+  },
+  {
+    "commodity_name": "Freight",
+    "commodity_id": "COM-004",
+    "item_count": 200
+  },
+  {
+    "commodity_name": "Ingredients",
+    "commodity_id": "COM-005",
+    "item_count": 196
+  },
+  {
+    "commodity_name": "Raw Materials",
+    "commodity_id": "COM-011",
+    "item_count": 196
+  },
+  {
+    "commodity_name": "Active Chemicals",
+    "commodity_id": "COM-001",
+    "item_count": 193
+  }
+]

@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Sales by Supplier Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-card h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0f4c75;
+            padding-bottom: 10px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+        }
+
+        .table-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-card h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0f4c75;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead {
+            background: #f8f9fa;
+            border-bottom: 2px solid #0f4c75;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            color: #333;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .number {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group label {
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button {
+            background: #0f4c75;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1b6ca8;
+        }
+
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Annual Sales by Supplier Dashboard</h1>
+            <p>Comprehensive analysis of supplier performance across 2023-2025</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total UPCs</h3>
+                    <div class="value" id="totalUPCs">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Suppliers</h3>
+                    <div class="value" id="totalSuppliers">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>2023 Total Sales</h3>
+                    <div class="value" id="sales2023">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>2024 Total Sales</h3>
+                    <div class="value" id="sales2024">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>2025 Total Sales</h3>
+                    <div class="value" id="sales2025">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="yearFilter">Filter by Year:</label>
+                <select id="yearFilter">
+                    <option value="">All Years</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="supplierFilter">Top N Suppliers:</label>
+                <select id="supplierFilter">
+                    <option value="10">Top 10</option>
+                    <option value="15">Top 15</option>
+                    <option value="26">All</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="countryFilter">Supplier Country:</label>
+                <select id="countryFilter">
+                    <option value="">All Countries</option>
+                </select>
+            </div>
+            <button onclick="resetFilters()">Reset Filters</button>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>Sales by Supplier Country</h2>
+                <div class="chart-wrapper">
+                    <canvas id="countryChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Top Suppliers - Annual Sales Comparison</h2>
+                <div class="chart-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="chart-card">
+                    <h2>Sales Trend Over Time</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h2>Market Share Distribution</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Year-over-Year Growth by Supplier</h2>
+                <div class="chart-wrapper">
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Commodity Cost Index Trends</h2>
+                <div class="chart-wrapper">
+                    <canvas id="commodityChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Item Count by Commodity</h2>
+                <div class="chart-wrapper">
+                    <canvas id="commodityCountChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Commodities by Cost Impact</h2>
+                <div class="chart-wrapper">
+                    <canvas id="commodityImpactChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <h2>Detailed Supplier Performance</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supplier</th>
+                        <th class="number">2023 Sales</th>
+                        <th class="number">2024 Sales</th>
+                        <th class="number">2025 Sales</th>
+                        <th class="number">23→24 Growth %</th>
+                        <th class="number">24→25 Growth %</th>
+                        <th class="number">Total 3-Yr Sales</th>
+                    </tr>
+                </thead>
+                <tbody id="detailTable">
+                    <tr><td colspan="7" style="text-align: center; color: #999;">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-card">
+            <h2>Supplier Unit Cost Trends</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supplier</th>
+                        <th class="number">2023 Avg Unit Cost</th>
+                        <th class="number">2024 Avg Unit Cost</th>
+                        <th class="number">2025 Avg Unit Cost</th>
+                        <th class="number">23→24 Change %</th>
+                        <th class="number">24→25 Change %</th>
+                        <th class="number">Cumulative Change %</th>
+                    </tr>
+                </thead>
+                <tbody id="unitCostTable">
+                    <tr><td colspan="7" style="text-align: center; color: #999;">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let allData = [];
+        let barChart, lineChart, pieChart, growthChart, countryChart, commodityChart, commodityCountChart, commodityImpactChart;
+        let commodityData = [];
+        let supplierUnitCostData = [];
+
+        // Color scheme
+        const colors = [
+            '#0f4c75', '#1b6ca8', '#2b9ec4', '#3baed9', '#4fc3f7',
+            '#43e97b', '#38f9d7', '#66bb6a', '#81c784', '#a5d6a7',
+            '#00796b', '#00897b', '#009688', '#26a69a', '#4db6ac',
+            '#80cbc4', '#4dd0e1', '#26c6da', '#00bcd4', '#0097a7'
+        ];
+
+        async function loadData() {
+            try {
+                console.log('Attempting to load supplier_sales_data.json...');
+                const response = await fetch('supplier_sales_data.json');
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                allData = await response.json();
+                console.log('Data loaded successfully. Records:', allData.length);
+                console.log('First item structure:', allData[0]);
+                
+                // Sort by 2025 sales (descending)
+                allData.sort((a, b) => b.y2025 - a.y2025);
+                
+                updateDashboard();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                const errorMsg = `
+                    <div class="header" style="text-align: center; color: red; margin-top: 50px;">
+                        <h1>❌ Error Loading Data</h1>
+                        <p style="margin: 20px 0; font-size: 16px;"><strong>Error Details:</strong></p>
+                        <p style="font-family: monospace; background: #f0f0f0; padding: 15px; border-radius: 5px; color: #333;">
+                            ${error.message}
+                        </p>
+                        <p style="margin-top: 20px;">Troubleshooting:</p>
+                        <ul style="text-align: left; display: inline-block;">
+                            <li>✓ Verify <code>supplier_sales_data.json</code> exists in the same folder</li>
+                            <li>✓ Try refreshing the page (Cmd+Shift+R)</li>
+                            <li>✓ Check browser console for detailed errors (F12)</li>
+                            <li>✓ Ensure the web server is running on port 8000</li>
+                        </ul>
+                    </div>
+                `;
+                document.querySelector('.container').innerHTML = errorMsg;
+            }
+        }
+
+        function getFilteredData() {
+            let filtered = [...allData];
+            const topN = document.getElementById('supplierFilter').value;
+            const selectedCountry = document.getElementById('countryFilter').value;
+            
+            // Filter by country
+            if (selectedCountry) {
+                filtered = filtered.filter(item => item.country_of_origin === selectedCountry);
+            }
+            
+            // Filter by top N
+            if (topN && topN !== '26') {
+                filtered = filtered.slice(0, parseInt(topN));
+            }
+            
+            return filtered;
+        }
+
+        function updateDashboard() {
+            const filtered = getFilteredData();
+            
+            // Update stats
+            const totalUPCs = allData.reduce((sum, item) => sum + (item.upc_count || 0), 0);
+            document.getElementById('totalUPCs').textContent = totalUPCs.toLocaleString();
+            document.getElementById('totalSuppliers').textContent = allData.length;
+            
+            // Populate country filter
+            const countries = [...new Set(allData.map(item => item.country_of_origin))].sort();
+            const countrySelect = document.getElementById('countryFilter');
+            const currentValue = countrySelect.value;
+            
+            // Only populate if not already populated
+            if (countrySelect.options.length === 1) {
+                countries.forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country;
+                    option.textContent = country;
+                    countrySelect.appendChild(option);
+                });
+            }
+            
+            countrySelect.value = currentValue;
+            
+            const total2023 = allData.reduce((sum, item) => sum + item.y2023, 0);
+            const total2024 = allData.reduce((sum, item) => sum + item.y2024, 0);
+            const total2025 = allData.reduce((sum, item) => sum + item.y2025, 0);
+            
+            document.getElementById('sales2023').textContent = formatCurrency(total2023);
+            document.getElementById('sales2024').textContent = formatCurrency(total2024);
+            document.getElementById('sales2025').textContent = formatCurrency(total2025);
+            
+            // Update charts
+            updateCountryChart(filtered);
+            updateBarChart(filtered);
+            updateLineChart(filtered);
+            updatePieChart(filtered);
+            updateGrowthChart(filtered);
+            updateDetailTable(filtered);
+            updateUnitCostTable();
+        }
+
+        function updateCountryChart(data) {
+            const ctx = document.getElementById('countryChart').getContext('2d');
+            
+            if (countryChart) countryChart.destroy();
+            
+            // Aggregate sales by supplier country from ALL data (not filtered)
+            const countrySales = {};
+            allData.forEach(item => {
+                const country = item.country_of_origin || 'Unknown';
+                if (!countrySales[country]) {
+                    countrySales[country] = 0;
+                }
+                countrySales[country] += item.y2023 + item.y2024 + item.y2025;
+            });
+            
+            console.log('Country Sales:', countrySales);
+            
+            // Sort by sales descending
+            const sortedCountries = Object.entries(countrySales)
+                .sort((a, b) => b[1] - a[1]);
+            
+            console.log('Sorted Countries:', sortedCountries);
+            
+            countryChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: sortedCountries.map(item => item[0]),
+                    datasets: [{
+                        label: 'Total Sales (3 Years)',
+                        data: sortedCountries.map(item => item[1]),
+                        backgroundColor: colors.slice(0, sortedCountries.length),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 15 }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000).toFixed(1) + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateBarChart(data) {
+            const ctx = document.getElementById('barChart').getContext('2d');
+            
+            if (barChart) barChart.destroy();
+            
+            barChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(item => item.supplier),
+                    datasets: [
+                        {
+                            label: '2023',
+                            data: data.map(item => item.y2023),
+                            backgroundColor: colors[0],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        },
+                        {
+                            label: '2024',
+                            data: data.map(item => item.y2024),
+                            backgroundColor: colors[1],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        },
+                        {
+                            label: '2025',
+                            data: data.map(item => item.y2025),
+                            backgroundColor: colors[2],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 15 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000).toFixed(1) + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateLineChart(data) {
+            const ctx = document.getElementById('lineChart').getContext('2d');
+            
+            if (lineChart) lineChart.destroy();
+            
+            lineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2023', '2024', '2025'],
+                    datasets: data.map((item, idx) => ({
+                        label: item.supplier,
+                        data: [item.y2023, item.y2024, item.y2025],
+                        borderColor: colors[idx % colors.length],
+                        backgroundColor: colors[idx % colors.length] + '20',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }))
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, padding: 10, font: { size: 10 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000).toFixed(1) + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updatePieChart(data) {
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            
+            if (pieChart) pieChart.destroy();
+            
+            const total2025 = data.reduce((sum, item) => sum + item.y2025, 0);
+            
+            pieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: data.map(item => item.supplier),
+                    datasets: [{
+                        data: data.map(item => (item.y2025 / total2025 * 100).toFixed(1)),
+                        backgroundColor: colors.slice(0, data.length),
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, padding: 10, font: { size: 10 } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateGrowthChart(data) {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            
+            if (growthChart) growthChart.destroy();
+            
+            // Calculate growth for each supplier
+            const dataWithGrowth = data.map(item => ({
+                supplier: item.supplier,
+                growth2324: item.y2023 > 0 ? ((item.y2024 - item.y2023) / item.y2023 * 100) : 0,
+                growth2425: item.y2024 > 0 ? ((item.y2025 - item.y2024) / item.y2024 * 100) : 0
+            }));
+            
+            // Sort by 2024→2025 growth (descending)
+            dataWithGrowth.sort((a, b) => b.growth2425 - a.growth2425);
+            
+            const growth2324 = dataWithGrowth.map(item => item.growth2324);
+            const growth2425 = dataWithGrowth.map(item => item.growth2425);
+            
+            growthChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataWithGrowth.map(item => item.supplier),
+                    datasets: [
+                        {
+                            label: '2023→2024 Growth %',
+                            data: growth2324,
+                            backgroundColor: colors[3],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        },
+                        {
+                            label: '2024→2025 Growth %',
+                            data: growth2425,
+                            backgroundColor: colors[4],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 15 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toFixed(1) + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateDetailTable(data) {
+            const tbody = document.getElementById('detailTable');
+            if (!tbody) {
+                console.error('detailTable element not found');
+                return;
+            }
+            
+            console.log('updateDetailTable called with', data.length, 'items');
+            tbody.innerHTML = '';
+            
+            data.forEach(item => {
+                const growth2324 = item.y2023 > 0 ? 
+                    ((item.y2024 - item.y2023) / item.y2023 * 100) : 0;
+                const growth2425 = item.y2024 > 0 ? 
+                    ((item.y2025 - item.y2024) / item.y2024 * 100) : 0;
+                const total = item.y2023 + item.y2024 + item.y2025;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${item.supplier}</strong></td>
+                    <td class="number">${formatCurrency(item.y2023)}</td>
+                    <td class="number">${formatCurrency(item.y2024)}</td>
+                    <td class="number">${formatCurrency(item.y2025)}</td>
+                    <td class="number" style="color: ${growth2324 >= 0 ? '#43e97b' : '#fa709a'}">
+                        ${growth2324 >= 0 ? '+' : ''}${growth2324.toFixed(2)}%
+                    </td>
+                    <td class="number" style="color: ${growth2425 >= 0 ? '#43e97b' : '#fa709a'}">
+                        ${growth2425 >= 0 ? '+' : ''}${growth2425.toFixed(2)}%
+                    </td>
+                    <td class="number"><strong>${formatCurrency(total)}</strong></td>
+                `;
+                tbody.appendChild(row);
+            });
+            console.log('detailTable updated with', data.length, 'rows');
+        }
+
+        function formatCurrency(value) {
+            if (value >= 1000000) {
+                return '$' + (value / 1000000).toFixed(2) + 'M';
+            } else if (value >= 1000) {
+                return '$' + (value / 1000).toFixed(1) + 'K';
+            }
+            return '$' + value.toFixed(2);
+        }
+
+        function updateCommodityChart() {
+            if (!commodityData || commodityData.length === 0) return;
+            
+            const ctx = document.getElementById('commodityChart');
+            if (!ctx) return;
+            
+            const context = ctx.getContext('2d');
+            
+            if (commodityChart) commodityChart.destroy();
+            
+            // Get all unique dates
+            const allDates = new Set();
+            commodityData.forEach(commodity => {
+                commodity.data.forEach(point => {
+                    allDates.add(point.date);
+                });
+            });
+            const sortedDates = Array.from(allDates).sort();
+            
+            // Create datasets for each commodity
+            const datasets = commodityData.map((commodity, idx) => {
+                const dataPoints = sortedDates.map(date => {
+                    const point = commodity.data.find(d => d.date === date);
+                    return point ? point.cost_index : null;
+                });
+                
+                return {
+                    label: commodity.commodity_name,
+                    data: dataPoints,
+                    borderColor: colors[idx % colors.length],
+                    backgroundColor: colors[idx % colors.length] + '20',
+                    tension: 0.3,
+                    fill: false,
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                };
+            });
+            
+            commodityChart = new Chart(context, {
+                type: 'line',
+                data: {
+                    labels: sortedDates,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, padding: 10, font: { size: 9 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Cost Index'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCommodityCountChart() {
+            if (!commodityCountData || commodityCountData.length === 0) return;
+            
+            const ctx = document.getElementById('commodityCountChart');
+            if (!ctx) return;
+            
+            const context = ctx.getContext('2d');
+            
+            if (commodityCountChart) commodityCountChart.destroy();
+            
+            commodityCountChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: commodityCountData.map(item => item.commodity_name),
+                    datasets: [{
+                        label: 'Number of Items',
+                        data: commodityCountData.map(item => item.item_count),
+                        backgroundColor: colors.slice(0, commodityCountData.length),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 15 }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: function(value) {
+                                    return value;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateUnitCostTable() {
+            if (!supplierUnitCostData || supplierUnitCostData.length === 0) {
+                console.log('Unit cost data not yet loaded, current data:', supplierUnitCostData);
+                return;
+            }
+            
+            const tbody = document.getElementById('unitCostTable');
+            if (!tbody) {
+                console.error('unitCostTable element not found');
+                return;
+            }
+            
+            console.log('updateUnitCostTable called with', supplierUnitCostData.length, 'items');
+            tbody.innerHTML = '';
+            
+            supplierUnitCostData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${item.supplier}</strong></td>
+                    <td class="number">$${item.avg_unit_cost_2023.toFixed(4)}</td>
+                    <td class="number">$${item.avg_unit_cost_2024.toFixed(4)}</td>
+                    <td class="number">$${item.avg_unit_cost_2025.toFixed(4)}</td>
+                    <td class="number" style="color: ${item.change_2023_2024_pct >= 0 ? '#fa709a' : '#43e97b'}">
+                        ${item.change_2023_2024_pct >= 0 ? '+' : ''}${item.change_2023_2024_pct.toFixed(2)}%
+                    </td>
+                    <td class="number" style="color: ${item.change_2024_2025_pct >= 0 ? '#fa709a' : '#43e97b'}">
+                        ${item.change_2024_2025_pct >= 0 ? '+' : ''}${item.change_2024_2025_pct.toFixed(2)}%
+                    </td>
+                    <td class="number" style="color: ${item.cumulative_change_pct >= 0 ? '#fa709a' : '#43e97b'}; font-weight: bold;">
+                        ${item.cumulative_change_pct >= 0 ? '+' : ''}${item.cumulative_change_pct.toFixed(2)}%
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            console.log('unitCostTable updated with', supplierUnitCostData.length, 'rows');
+        }
+
+        function updateCommodityImpactChart() {
+            if (!commodityImpactData || commodityImpactData.length === 0) return;
+            
+            const ctx = document.getElementById('commodityImpactChart');
+            if (!ctx) return;
+            
+            const context = ctx.getContext('2d');
+            
+            if (commodityImpactChart) commodityImpactChart.destroy();
+            
+            commodityImpactChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: commodityImpactData.map(item => item.commodity_name),
+                    datasets: [{
+                        label: 'Cost Impact Score',
+                        data: commodityImpactData.map(item => item.impact_score),
+                        backgroundColor: colors.slice(0, commodityImpactData.length),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 15 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const item = commodityImpactData[context.dataIndex];
+                                    return `Items: ${item.item_count} | Volatility: ${item.cost_volatility_pct}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toFixed(0);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('yearFilter').value = '';
+            document.getElementById('supplierFilter').value = '10';
+            document.getElementById('countryFilter').value = '';
+            updateDashboard();
+        }
+
+        // Event listeners
+        document.getElementById('supplierFilter').addEventListener('change', updateDashboard);
+        document.getElementById('countryFilter').addEventListener('change', updateDashboard);
+        
+        // Load data on page load
+        loadData();
+        
+        // Load commodity data
+        async function loadCommodityData() {
+            try {
+                const response = await fetch('commodity_index_data.json');
+                if (response.ok) {
+                    commodityData = await response.json();
+                    updateCommodityChart();
+                }
+            } catch (error) {
+                console.error('Error loading commodity data:', error);
+            }
+        }
+        
+        loadCommodityData();
+        
+        // Load commodity item count data
+        let commodityCountData = [];
+        async function loadCommodityCountData() {
+            try {
+                const response = await fetch('commodity_item_count.json');
+                if (response.ok) {
+                    commodityCountData = await response.json();
+                    updateCommodityCountChart();
+                }
+            } catch (error) {
+                console.error('Error loading commodity count data:', error);
+            }
+        }
+        
+        loadCommodityCountData();
+        
+        // Load commodity cost impact data
+        let commodityImpactData = [];
+        async function loadCommodityImpactData() {
+            try {
+                const response = await fetch('commodity_cost_impact.json');
+                if (response.ok) {
+                    commodityImpactData = await response.json();
+                    updateCommodityImpactChart();
+                }
+            } catch (error) {
+                console.error('Error loading commodity impact data:', error);
+            }
+        }
+        
+        loadCommodityImpactData();
+        
+        // Load supplier unit cost trends data
+        async function loadSupplierUnitCostData() {
+            try {
+                const response = await fetch('supplier_unit_cost_trends.json');
+                if (response.ok) {
+                    supplierUnitCostData = await response.json();
+                    updateUnitCostTable();
+                }
+            } catch (error) {
+                console.error('Error loading supplier unit cost data:', error);
+            }
+        }
+        
+        loadSupplierUnitCostData();
+    </script>
+</body>
+</html>
+

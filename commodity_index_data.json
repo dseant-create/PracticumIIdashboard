@@ -1,0 +1,3096 @@
+[
+  {
+    "commodity_name": "Active Chemicals",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 101.03
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 101.07
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 102.35
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 105.05
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 104.94
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 104.82
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 107.67
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 109.24
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 108.72
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 109.92
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 109.4
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 108.89
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 109.58
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 106.58
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 103.98
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 103.33
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 101.96
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 102.72
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 101.53
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 99.55
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 102.08
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 101.98
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 102.35
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 100.34
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 99.74
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 100.17
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 98.62
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 99.45
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 98.77
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 98.58
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 97.9
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 100.99
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 101.22
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 99.81
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 101.35
+      }
+    ]
+  },
+  {
+    "commodity_name": "Co-manufacturing",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 99.48
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 99.78
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 98.83
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 98.25
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 98.54
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 99.14
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 99.42
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 99.54
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 99.54
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 98.87
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 98.64
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 98.56
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 99.34
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 99.72
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 98.89
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 99.25
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 99.21
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 99.0
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 99.54
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 100.31
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 101.03
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 100.73
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 100.73
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 101.11
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 101.86
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 101.77
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 101.84
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 101.38
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 100.86
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 101.52
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 102.5
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 102.65
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 103.43
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 103.83
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 103.64
+      }
+    ]
+  },
+  {
+    "commodity_name": "Fragrance",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.66
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 102.44
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 102.74
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 104.58
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 102.34
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 103.46
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 103.87
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 103.91
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 104.34
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 102.72
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 102.84
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 103.51
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 105.28
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 105.11
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 104.65
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 104.49
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 105.72
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 106.39
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 106.2
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 107.05
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 107.5
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 108.82
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 108.45
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 108.47
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 108.41
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 107.27
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 107.91
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 108.52
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 108.88
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 108.98
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 107.88
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 107.8
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 107.8
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 107.33
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 107.51
+      }
+    ]
+  },
+  {
+    "commodity_name": "Freight",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.85
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 104.48
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 105.16
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 106.0
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 106.25
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 103.12
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 103.45
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 103.92
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 109.1
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 109.57
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 110.97
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 111.07
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 109.02
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 111.55
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 113.39
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 115.33
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 113.94
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 117.09
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 114.69
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 116.26
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 121.51
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 120.36
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 120.1
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 120.5
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 119.65
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 116.89
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 117.44
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 115.72
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 117.07
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 115.64
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 119.13
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 117.95
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 118.19
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 120.74
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 119.1
+      }
+    ]
+  },
+  {
+    "commodity_name": "Ingredients",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.46
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 101.83
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 100.73
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 101.16
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 101.65
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 102.59
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 102.11
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 101.56
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 102.28
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 102.81
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 103.3
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 103.88
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 103.57
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 104.05
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 104.58
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 104.24
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 106.14
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 106.85
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 106.39
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 107.58
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 106.99
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 107.98
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 109.32
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 108.86
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 110.03
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 110.71
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 111.77
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 113.84
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 113.91
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 113.5
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 113.3
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 113.17
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 113.41
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 114.03
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 114.6
+      }
+    ]
+  },
+  {
+    "commodity_name": "Labor",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.83
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 101.01
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 102.36
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 102.31
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 104.72
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 105.42
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 104.86
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 104.13
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 104.71
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 104.7
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 105.47
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 106.05
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 106.16
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 105.61
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 104.5
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 104.3
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 105.19
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 105.55
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 104.66
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 104.98
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 105.48
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 104.91
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 105.21
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 105.43
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 104.64
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 105.11
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 105.76
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 106.86
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 107.94
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 106.92
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 106.29
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 106.91
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 107.53
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 108.15
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 111.68
+      }
+    ]
+  },
+  {
+    "commodity_name": "Overhead",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.43
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 101.17
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 101.82
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 102.3
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 102.23
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 102.78
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 102.44
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 102.42
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 102.25
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 102.41
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 103.84
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 102.87
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 103.38
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 102.56
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 102.4
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 103.13
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 103.28
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 102.77
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 102.47
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 102.97
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 102.66
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 102.9
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 103.03
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 102.77
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 104.11
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 104.59
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 103.52
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 103.74
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 103.47
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 104.07
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 103.73
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 103.77
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 104.18
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 104.79
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 104.2
+      }
+    ]
+  },
+  {
+    "commodity_name": "Packaging",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 99.87
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 99.54
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 98.96
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 101.85
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 102.82
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 101.3
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 103.02
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 106.57
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 108.55
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 106.55
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 106.18
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 108.52
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 107.79
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 108.88
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 110.49
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 109.4
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 109.7
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 104.93
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 103.74
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 103.73
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 102.23
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 105.02
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 103.21
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 102.92
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 103.49
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 106.03
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 104.2
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 106.34
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 106.74
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 105.6
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 106.69
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 107.38
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 106.83
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 107.32
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 107.11
+      }
+    ]
+  },
+  {
+    "commodity_name": "Pulp",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.43
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 102.49
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 107.41
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 103.56
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 110.21
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 103.92
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 103.54
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 105.44
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 106.41
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 104.54
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 103.98
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 102.55
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 100.84
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 103.48
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 104.67
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 102.61
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 105.44
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 106.5
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 109.16
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 111.3
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 108.66
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 106.95
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 109.42
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 111.5
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 111.53
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 112.01
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 116.37
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 114.42
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 116.39
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 115.79
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 115.14
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 119.01
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 122.03
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 125.09
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 130.06
+      }
+    ]
+  },
+  {
+    "commodity_name": "Quality Testing",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.35
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 100.97
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 101.19
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 101.67
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 101.97
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 102.36
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 102.95
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 102.97
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 104.19
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 104.12
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 103.97
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 104.81
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 105.51
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 106.14
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 106.77
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 107.13
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 107.11
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 107.51
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 107.58
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 108.38
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 108.68
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 108.69
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 108.92
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 109.48
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 109.61
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 109.62
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 110.1
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 110.59
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 110.74
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 110.91
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 111.39
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 111.12
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 110.87
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 110.92
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 111.21
+      }
+    ]
+  },
+  {
+    "commodity_name": "Raw Materials",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.93
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 103.8
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 105.69
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 105.86
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 106.28
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 104.98
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 105.71
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 105.97
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 106.98
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 105.98
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 107.33
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 110.48
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 110.75
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 111.94
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 113.68
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 113.41
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 114.31
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 114.82
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 115.83
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 115.2
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 115.73
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 117.16
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 120.44
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 122.85
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 127.7
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 126.63
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 128.97
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 129.91
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 135.11
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 133.9
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 133.02
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 132.68
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 128.62
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 128.06
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 127.01
+      }
+    ]
+  },
+  {
+    "commodity_name": "Resin",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 100.42
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 101.21
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 104.93
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 106.96
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 105.94
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 104.28
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 105.39
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 102.91
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 106.61
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 109.13
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 108.31
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 104.95
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 107.78
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 107.69
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 110.36
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 107.18
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 106.12
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 106.27
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 106.51
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 105.75
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 107.14
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 105.12
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 104.98
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 105.36
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 106.53
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 108.11
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 105.96
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 103.03
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 105.66
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 106.47
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 105.11
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 108.33
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 108.71
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 111.28
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 111.58
+      }
+    ]
+  },
+  {
+    "commodity_name": "Utilities",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 102.96
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 105.64
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 105.83
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 107.58
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 108.93
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 111.26
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 110.5
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 111.95
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 113.91
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 112.05
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 111.0
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 108.81
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 108.98
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 110.45
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 112.98
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 113.63
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 116.4
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 115.03
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 113.23
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 113.7
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 114.77
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 115.28
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 112.97
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 113.39
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 112.16
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 113.61
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 114.66
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 113.91
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 113.76
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 112.86
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 113.32
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 115.17
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 114.36
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 115.6
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 115.42
+      }
+    ]
+  },
+  {
+    "commodity_name": "Warehousing",
+    "data": [
+      {
+        "date": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "cost_index": 100.0
+      },
+      {
+        "date": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "cost_index": 99.55
+      },
+      {
+        "date": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "cost_index": 99.63
+      },
+      {
+        "date": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "cost_index": 99.26
+      },
+      {
+        "date": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "cost_index": 99.13
+      },
+      {
+        "date": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "cost_index": 98.69
+      },
+      {
+        "date": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "cost_index": 99.74
+      },
+      {
+        "date": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "cost_index": 99.88
+      },
+      {
+        "date": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "cost_index": 99.68
+      },
+      {
+        "date": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "cost_index": 100.3
+      },
+      {
+        "date": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "cost_index": 100.78
+      },
+      {
+        "date": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "cost_index": 101.2
+      },
+      {
+        "date": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "cost_index": 101.43
+      },
+      {
+        "date": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "cost_index": 101.72
+      },
+      {
+        "date": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "cost_index": 101.59
+      },
+      {
+        "date": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "cost_index": 101.44
+      },
+      {
+        "date": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "cost_index": 101.44
+      },
+      {
+        "date": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "cost_index": 100.46
+      },
+      {
+        "date": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "cost_index": 99.86
+      },
+      {
+        "date": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "cost_index": 100.64
+      },
+      {
+        "date": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "cost_index": 101.56
+      },
+      {
+        "date": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "cost_index": 101.97
+      },
+      {
+        "date": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "cost_index": 102.79
+      },
+      {
+        "date": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "cost_index": 103.49
+      },
+      {
+        "date": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "cost_index": 104.93
+      },
+      {
+        "date": "2025-02",
+        "year": 2025,
+        "month": 2,
+        "cost_index": 105.42
+      },
+      {
+        "date": "2025-03",
+        "year": 2025,
+        "month": 3,
+        "cost_index": 105.49
+      },
+      {
+        "date": "2025-04",
+        "year": 2025,
+        "month": 4,
+        "cost_index": 105.14
+      },
+      {
+        "date": "2025-05",
+        "year": 2025,
+        "month": 5,
+        "cost_index": 104.47
+      },
+      {
+        "date": "2025-06",
+        "year": 2025,
+        "month": 6,
+        "cost_index": 104.7
+      },
+      {
+        "date": "2025-07",
+        "year": 2025,
+        "month": 7,
+        "cost_index": 104.46
+      },
+      {
+        "date": "2025-08",
+        "year": 2025,
+        "month": 8,
+        "cost_index": 103.88
+      },
+      {
+        "date": "2025-09",
+        "year": 2025,
+        "month": 9,
+        "cost_index": 103.7
+      },
+      {
+        "date": "2025-10",
+        "year": 2025,
+        "month": 10,
+        "cost_index": 103.71
+      },
+      {
+        "date": "2025-11",
+        "year": 2025,
+        "month": 11,
+        "cost_index": 105.09
+      },
+      {
+        "date": "2025-12",
+        "year": 2025,
+        "month": 12,
+        "cost_index": 106.09
+      }
+    ]
+  }
+]
