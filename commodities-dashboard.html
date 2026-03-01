@@ -426,8 +426,17 @@
                 // Load commodity master data directly from JSON (CSV path may differ when hosted)
                 const masterJsonResponse = await fetch('commodity_master.json');
                 if (masterJsonResponse.ok) {
-                    allMasterData = await masterJsonResponse.json();
-                    console.log('Master data loaded:', allMasterData.length);
+                    // JSON file may contain NaN values (not valid JSON) so sanitize
+                    let text = await masterJsonResponse.text();
+                    // replace bare NaN occurrences with null
+                    text = text.replace(/\bNaN\b/g, 'null');
+                    try {
+                        allMasterData = JSON.parse(text);
+                        console.log('Master data loaded:', allMasterData.length);
+                    } catch (e) {
+                        console.error('Failed parsing master data after sanitize', e);
+                        allMasterData = [];
+                    }
                 } else {
                     console.warn('Master data not available');
                 }
