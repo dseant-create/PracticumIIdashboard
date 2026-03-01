@@ -44,11 +44,24 @@
             font-size: 14px;
         }
 
+        /* summary cards: keep all tiles on one row in wide view, allow horizontal scroll
+           on smaller screens the grid will wrap normally */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* flow columns horizontally with equal width cards */
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(200px, 1fr);
             gap: 15px;
             margin-top: 20px;
+            overflow-x: auto; /* allow scrolling if they exceed container */
+        }
+
+        @media (max-width: 1024px) {
+            .stats-grid {
+                /* revert to wrapping grid when viewport narrows */
+                grid-auto-flow: row;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
         }
 
         .stat-card {
