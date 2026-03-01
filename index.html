@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPG Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #0f4c75;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .page-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #f5f7fa 0%, #fff 100%);
+        }
+
+        .page-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .page-card h2 {
+            color: #0f4c75;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .page-card p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .page-card .features {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            width: 100%;
+        }
+
+        .features li {
+            list-style: none;
+            margin: 5px 0;
+        }
+
+        .features li:before {
+            content: "✓ ";
+            color: #43e97b;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .page-icon {
+                font-size: 50px;
+            }
+
+            .page-card h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 CPG Analytics Dashboard</h1>
+            <p>Comprehensive Consumer Packaged Goods Analysis Platform</p>
+            <p style="font-size: 16px; color: #999;">5-Year Analysis (2023-2027)</p>
+        </div>
+
+        <div class="pages-grid">
+            <a href="sales-dashboard.html" class="page-card">
+                <div class="page-icon">💰</div>
+                <h2>Sales Analytics</h2>
+                <p>Explore supplier performance, sales trends, and market growth metrics across 5 years.</p>
+                <div class="features">
+                    <ul>
+                        <li>Supplier performance metrics</li>
+                        <li>Year-over-year growth analysis</li>
+                        <li>Sales trends and forecasting</li>
+                        <li>Market share distribution</li>
+                        <li>Unit cost trends</li>
+                    </ul>
+                </div>
+            </a>
+
+            <a href="commodities-dashboard.html" class="page-card">
+                <div class="page-icon">📦</div>
+                <h2>Commodity Analysis</h2>
+                <p>Analyze commodity costs, volatility, and supply chain impact on production.</p>
+                <div class="features">
+                    <ul>
+                        <li>Commodity cost indices</li>
+                        <li>Price volatility tracking</li>
+                        <li>Item-commodity mappings</li>
+                        <li>Cost impact analysis</li>
+                        <li>Supply chain insights</li>
+                    </ul>
+                </div>
+            </a>
+
+            <a href="supplier-dashboard.html" class="page-card">
+                <div class="page-icon">🏢</div>
+                <h2>Supplier Analysis</h2>
+                <p>Comprehensive supplier performance review with commodity cost impact breakdown by supplier.</p>
+                <div class="features">
+                    <ul>
+                        <li>Supplier cost trends</li>
+                        <li>Item and commodity breakdown</li>
+                        <li>Cost impact by commodity</li>
+                        <li>5-year sales trends</li>
+                        <li>Risk assessment by supplier</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 CPG Analytics Platform | Data period: 2023-2027 | Last updated: March 1, 2026</p>
+        </div>
+    </div>
+</body>
+</html>

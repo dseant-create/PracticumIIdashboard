@@ -1,5 +1,5 @@
 """
-CPG GFR 1000-row synthetic dataset generator (2023–2025)
+CPG GFR 1000-row synthetic dataset generator (2023–2027)
 - Creates 1000 rows with the requested columns + calculations
 - Writes an Excel file with light formatting (freeze header, table style, number formats)
 
@@ -162,31 +162,39 @@ def allocate_price_patterns(n: int) -> list[str]:
     return patterns
 
 
-def generate_prices(p23: float, pattern: str) -> tuple[float, float, float]:
+def generate_prices(p23: float, pattern: str) -> tuple[float, float, float, float, float]:
     if pattern == "flat":
-        return p23, p23, p23
+        return p23, p23, p23, p23, p23
 
     if pattern == "up":
-        r1, r2 = random.uniform(0.02, 0.12), random.uniform(0.02, 0.12)
+        r1, r2, r3, r4 = random.uniform(0.02, 0.12), random.uniform(0.02, 0.12), random.uniform(0.02, 0.12), random.uniform(0.02, 0.12)
         p24 = round(p23 * (1 + r1), 2)
         p25 = round(p24 * (1 + r2), 2)
-        return p23, p24, p25
+        p26 = round(p25 * (1 + r3), 2)
+        p27 = round(p26 * (1 + r4), 2)
+        return p23, p24, p25, p26, p27
 
     if pattern == "down":
-        r1, r2 = random.uniform(0.02, 0.12), random.uniform(0.02, 0.12)
+        r1, r2, r3, r4 = random.uniform(0.02, 0.12), random.uniform(0.02, 0.12), random.uniform(0.02, 0.12), random.uniform(0.02, 0.12)
         p24 = round(max(0.49, p23 * (1 - r1)), 2)
         p25 = round(max(0.49, p24 * (1 - r2)), 2)
-        return p23, p24, p25
+        p26 = round(max(0.49, p25 * (1 - r3)), 2)
+        p27 = round(max(0.49, p26 * (1 - r4)), 2)
+        return p23, p24, p25, p26, p27
 
-    # mixed (either up then down, or down then up)
-    r1, r2 = random.uniform(0.02, 0.12), random.uniform(0.02, 0.12)
+    # mixed (alternating up and down patterns)
+    r1, r2, r3, r4 = random.uniform(0.02, 0.12), random.uniform(0.02, 0.12), random.uniform(0.02, 0.12), random.uniform(0.02, 0.12)
     if random.random() < 0.5:
         p24 = round(p23 * (1 + r1), 2)
         p25 = round(max(0.49, p24 * (1 - r2)), 2)
+        p26 = round(p25 * (1 + r3), 2)
+        p27 = round(max(0.49, p26 * (1 - r4)), 2)
     else:
         p24 = round(max(0.49, p23 * (1 - r1)), 2)
         p25 = round(p24 * (1 + r2), 2)
-    return p23, p24, p25
+        p26 = round(max(0.49, p25 * (1 - r3)), 2)
+        p27 = round(p26 * (1 + r4), 2)
+    return p23, p24, p25, p26, p27
 
 
 def clip_margin(x: float) -> float:
@@ -214,13 +222,13 @@ def write_excel_with_formatting(df: pd.DataFrame, out_path: Path) -> None:
     # Basic column widths (tweak as needed)
     widths = {
         "A": 12, "B": 12, "C": 14, "D": 36, "E": 22, "F": 12, "G": 16,
-        "H": 9, "I": 9, "J": 12, "K": 14, "L": 14, "M": 14,
-        "N": 14, "O": 14, "P": 14, "Q": 16, "R": 16, "S": 16,
-        "T": 13, "U": 13, "V": 13, "W": 14, "X": 14, "Y": 14,
-        "Z": 13, "AA": 13, "AB": 13, "AC": 18,
+        "H": 9, "I": 9, "J": 12, "K": 14, "L": 14, "M": 14, "N": 14, "O": 14,
+        "P": 14, "Q": 14, "R": 14, "S": 16, "T": 16, "U": 16, "V": 16,
+        "W": 13, "X": 13, "Y": 13, "Z": 13, "AA": 13, "AB": 13, "AC": 18,
         "AD": 18, "AE": 14, "AF": 18, "AG": 14, "AH": 18, "AI": 14,
         "AJ": 15, "AK": 15, "AL": 15, "AM": 15, "AN": 15, "AO": 15,
-        "AP": 15, "AQ": 15, "AR": 15,
+        "AP": 15, "AQ": 15, "AR": 15, "AS": 15, "AT": 15, "AU": 15,
+        "AV": 15, "AW": 15, "AX": 15, "AY": 15, "AZ": 15,
     }
     for col, w in widths.items():
         ws.column_dimensions[col].width = w
@@ -240,24 +248,24 @@ def write_excel_with_formatting(df: pd.DataFrame, out_path: Path) -> None:
             ws.cell(row=row, column=col).number_format = fmt
 
     for cname in [
-        "Sale Price 2023", "Sale Price 2024", "Sale Price 2025",
-        "Total Sales $ 2023", "Total Sales $ 2024", "Total Sales $ 2025",
-        "Unit Margin $ 2023", "Unit Margin $ 2024", "Unit Margin $ 2025",
+        "Sale Price 2023", "Sale Price 2024", "Sale Price 2025", "Sale Price 2026", "Sale Price 2027",
+        "Total Sales $ 2023", "Total Sales $ 2024", "Total Sales $ 2025", "Total Sales $ 2026", "Total Sales $ 2027",
+        "Unit Margin $ 2023", "Unit Margin $ 2024", "Unit Margin $ 2025", "Unit Margin $ 2026", "Unit Margin $ 2027",
     ]:
         set_col_format(cname, currency)
 
     for cname in [
-        "Unit Cost 2023", "Unit Cost 2024", "Unit Cost 2025",
-        "Comp1 Cost 2023", "Comp1 Cost 2024", "Comp1 Cost 2025",
-        "Comp2 Cost 2023", "Comp2 Cost 2024", "Comp2 Cost 2025",
-        "Comp3 Cost 2023", "Comp3 Cost 2024", "Comp3 Cost 2025",
+        "Unit Cost 2023", "Unit Cost 2024", "Unit Cost 2025", "Unit Cost 2026", "Unit Cost 2027",
+        "Comp1 Cost 2023", "Comp1 Cost 2024", "Comp1 Cost 2025", "Comp1 Cost 2026", "Comp1 Cost 2027",
+        "Comp2 Cost 2023", "Comp2 Cost 2024", "Comp2 Cost 2025", "Comp2 Cost 2026", "Comp2 Cost 2027",
+        "Comp3 Cost 2023", "Comp3 Cost 2024", "Comp3 Cost 2025", "Comp3 Cost 2026", "Comp3 Cost 2027",
     ]:
         set_col_format(cname, cost_fmt)
 
-    for cname in ["Sales Units 2023", "Sales Units 2024", "Sales Units 2025"]:
+    for cname in ["Sales Units 2023", "Sales Units 2024", "Sales Units 2025", "Sales Units 2026", "Sales Units 2027"]:
         set_col_format(cname, units_fmt)
 
-    for cname in ["Margin % 2023", "Margin % 2024", "Margin % 2025", "Component 1 %", "Component 2 %", "Component 3 %"]:
+    for cname in ["Margin % 2023", "Margin % 2024", "Margin % 2025", "Margin % 2026", "Margin % 2027", "Component 1 %", "Component 2 %", "Component 3 %"]:
         set_col_format(cname, pct_fmt)
 
     set_col_format("Last Cost Change Date", date_fmt)
@@ -323,38 +331,54 @@ def main() -> None:
 
         # Prices per year with required pattern mix
         p23 = base_price_for(product_type)
-        p23, p24, p25 = generate_prices(p23, patterns[i])
+        p23, p24, p25, p26, p27 = generate_prices(p23, patterns[i])
 
         # Units per year
         u23 = random.randint(10_000, 100_000)
         u24 = int(round(u23 * random.uniform(0.80, 1.20)))
         u25 = int(round(u24 * random.uniform(0.80, 1.20)))
+        u26 = int(round(u25 * random.uniform(0.80, 1.20)))
+        u27 = int(round(u26 * random.uniform(0.80, 1.20)))
         u24 = min(100_000, max(10_000, u24))
         u25 = min(100_000, max(10_000, u25))
+        u26 = min(100_000, max(10_000, u26))
+        u27 = min(100_000, max(10_000, u27))
 
         # Margin % per year (5%–50%)
         m23 = clip_margin(np.random.normal(0.28, 0.10))
         m24 = clip_margin(m23 + np.random.normal(0.00, 0.05))
         m25 = clip_margin(m24 + np.random.normal(0.00, 0.05))
-        m23, m24, m25 = round(m23, 4), round(m24, 4), round(m25, 4)
+        m26 = clip_margin(m25 + np.random.normal(0.00, 0.05))
+        m27 = clip_margin(m26 + np.random.normal(0.00, 0.05))
+        m23, m24, m25, m26, m27 = round(m23, 4), round(m24, 4), round(m25, 4), round(m26, 4), round(m27, 4)
 
         # Unit costs derived from margin% and price: cost = price * (1 - margin%)
         c23 = round(p23 * (1 - m23), 4)
         c24 = round(p24 * (1 - m24), 4)
         c25 = round(p25 * (1 - m25), 4)
+        c26 = round(p26 * (1 - m26), 4)
+        c27 = round(p27 * (1 - m27), 4)
 
         # Unit margin $: price - cost
         mu23 = round(p23 - c23, 4)
         mu24 = round(p24 - c24, 4)
         mu25 = round(p25 - c25, 4)
+        mu26 = round(p26 - c26, 4)
+        mu27 = round(p27 - c27, 4)
 
         # Total sales $ = units * price
         s23 = round(u23 * p23, 2)
         s24 = round(u24 * p24, 2)
         s25 = round(u25 * p25, 2)
+        s26 = round(u26 * p26, 2)
+        s27 = round(u27 * p27, 2)
 
-        # Last cost change date within last 3 years, aligned to year of change
-        if c25 != c24:
+        # Last cost change date within last 5 years, aligned to year of change
+        if c27 != c26:
+            last_year = 2027
+        elif c26 != c25:
+            last_year = 2026
+        elif c25 != c24:
             last_year = 2025
         elif c24 != c23:
             last_year = 2024
@@ -373,6 +397,8 @@ def main() -> None:
         comp1_23, comp2_23, comp3_23 = round(c23 * p1, 4), round(c23 * p2, 4), round(c23 * p3, 4)
         comp1_24, comp2_24, comp3_24 = round(c24 * p1, 4), round(c24 * p2, 4), round(c24 * p3, 4)
         comp1_25, comp2_25, comp3_25 = round(c25 * p1, 4), round(c25 * p2, 4), round(c25 * p3, 4)
+        comp1_26, comp2_26, comp3_26 = round(c26 * p1, 4), round(c26 * p2, 4), round(c26 * p3, 4)
+        comp1_27, comp2_27, comp3_27 = round(c27 * p1, 4), round(c27 * p2, 4), round(c27 * p3, 4)
 
         rows.append(
             {
@@ -389,21 +415,33 @@ def main() -> None:
                 "Sale Price 2023": p23,
                 "Sale Price 2024": p24,
                 "Sale Price 2025": p25,
+                "Sale Price 2026": p26,
+                "Sale Price 2027": p27,
                 "Sales Units 2023": u23,
                 "Sales Units 2024": u24,
                 "Sales Units 2025": u25,
+                "Sales Units 2026": u26,
+                "Sales Units 2027": u27,
                 "Total Sales $ 2023": s23,
                 "Total Sales $ 2024": s24,
                 "Total Sales $ 2025": s25,
+                "Total Sales $ 2026": s26,
+                "Total Sales $ 2027": s27,
                 "Margin % 2023": m23,
                 "Margin % 2024": m24,
                 "Margin % 2025": m25,
+                "Margin % 2026": m26,
+                "Margin % 2027": m27,
                 "Unit Margin $ 2023": mu23,
                 "Unit Margin $ 2024": mu24,
                 "Unit Margin $ 2025": mu25,
+                "Unit Margin $ 2026": mu26,
+                "Unit Margin $ 2027": mu27,
                 "Unit Cost 2023": c23,
                 "Unit Cost 2024": c24,
                 "Unit Cost 2025": c25,
+                "Unit Cost 2026": c26,
+                "Unit Cost 2027": c27,
                 "Last Cost Change Date": last_cost_change_date,
                 "Component 1": comps[0],
                 "Component 1 %": p1,
@@ -414,12 +452,18 @@ def main() -> None:
                 "Comp1 Cost 2023": comp1_23,
                 "Comp1 Cost 2024": comp1_24,
                 "Comp1 Cost 2025": comp1_25,
+                "Comp1 Cost 2026": comp1_26,
+                "Comp1 Cost 2027": comp1_27,
                 "Comp2 Cost 2023": comp2_23,
                 "Comp2 Cost 2024": comp2_24,
                 "Comp2 Cost 2025": comp2_25,
+                "Comp2 Cost 2026": comp2_26,
+                "Comp2 Cost 2027": comp2_27,
                 "Comp3 Cost 2023": comp3_23,
                 "Comp3 Cost 2024": comp3_24,
                 "Comp3 Cost 2025": comp3_25,
+                "Comp3 Cost 2026": comp3_26,
+                "Comp3 Cost 2027": comp3_27,
             }
         )
 

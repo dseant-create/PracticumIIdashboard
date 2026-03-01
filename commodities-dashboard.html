@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commodity Analysis Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            color: #0f4c75;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            color: white;
+            background: #ccc;
+        }
+
+        .nav-buttons a.active {
+            background: #0f4c75;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-card h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0f4c75;
+            padding-bottom: 10px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+        }
+
+        .table-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-card h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0f4c75;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead {
+            background: #f8f9fa;
+            border-bottom: 2px solid #0f4c75;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            color: #333;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .number {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group label {
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button {
+            background: #0f4c75;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1b6ca8;
+        }
+
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="index.html">← Back to Dashboard Home</a>
+            <div class="nav-buttons">
+                <a href="sales-dashboard.html">Sales</a>
+                <a href="commodities-dashboard.html" class="active">Commodities</a>
+                <a href="supplier-dashboard.html">Suppliers</a>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>📦 Commodity Analysis Dashboard</h1>
+            <p>Supply chain cost analysis and commodity market tracking (2023-2027)</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Commodities</h3>
+                    <div class="value" id="totalCommodities">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Items</h3>
+                    <div class="value" id="totalItems">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Avg Volatility</h3>
+                    <div class="value" id="avgVolatility">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>High Risk Commodities</h3>
+                    <div class="value" id="riskCommodities">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="commodityFilter">Filter by Commodity:</label>
+                <select id="commodityFilter">
+                    <option value="">All Commodities</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="riskFilter">Risk Level:</label>
+                <select id="riskFilter">
+                    <option value="">All Levels</option>
+                    <option value="High">High Risk</option>
+                    <option value="Medium">Medium Risk</option>
+                    <option value="Low">Low Risk</option>
+                </select>
+            </div>
+            <button onclick="resetFilters()">Reset Filters</button>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>Commodity Cost Index Trends (2023-2027)</h2>
+                <div class="chart-wrapper">
+                    <canvas id="commodityChart"></canvas>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="chart-card">
+                    <h2>Item Count by Commodity</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="commodityCountChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h2>Commodities by Cost Impact</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="commodityImpactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Risk Level Distribution</h2>
+                <div class="chart-wrapper">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <h2>Commodity Master Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commodity Name</th>
+                        <th>Component Type</th>
+                        <th>Base Unit</th>
+                        <th>Commodity Group</th>
+                        <th>Risk Level</th>
+                        <th>Volatility Class</th>
+                        <th>Hedging Eligible</th>
+                    </tr>
+                </thead>
+                <tbody id="commodityTable">
+                    <tr><td colspan="7" style="text-align: center; color: #999;">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-card">
+            <h2>Commodity Cost Impact Analysis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commodity Name</th>
+                        <th class="number">Item Count</th>
+                        <th class="number">Impact Score</th>
+                        <th class="number">Cost Volatility %</th>
+                        <th>Risk Level</th>
+                        <th>Key Drivers</th>
+                    </tr>
+                </thead>
+                <tbody id="impactTable">
+                    <tr><td colspan="6" style="text-align: center; color: #999;">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let allCommodityData = [];
+        let allMasterData = [];
+        let allImpactData = [];
+        let commodityChart, commodityCountChart, commodityImpactChart, riskChart;
+
+        // Color scheme
+        const colors = [
+            '#0f4c75', '#1b6ca8', '#2b9ec4', '#3baed9', '#4fc3f7',
+            '#43e97b', '#38f9d7', '#66bb6a', '#81c784', '#a5d6a7',
+            '#00796b', '#00897b', '#009688', '#26a69a', '#4db6ac'
+        ];
+
+        async function loadData() {
+            try {
+                console.log('Loading commodity data...');
+                
+                // Load commodity index data
+                const commodityResponse = await fetch('commodity_index_data.json');
+                if (commodityResponse.ok) {
+                    allCommodityData = await commodityResponse.json();
+                    console.log('Commodity data loaded:', allCommodityData.length);
+                }
+                
+                // Load commodity master data
+                const masterResponse = await fetch('commodity_master.csv');
+                if (masterResponse.ok) {
+                    // For now we'll load this as JSON from the JSON version if available
+                    const masterJsonResponse = await fetch('commodity_master.json');
+                    if (masterJsonResponse.ok) {
+                        allMasterData = await masterJsonResponse.json();
+                        console.log('Master data loaded:', allMasterData.length);
+                    }
+                }
+                
+                // Load impact data
+                const impactResponse = await fetch('commodity_cost_impact.json');
+                if (impactResponse.ok) {
+                    allImpactData = await impactResponse.json();
+                    console.log('Impact data loaded:', allImpactData.length);
+                }
+                
+                updateDashboard();
+            } catch (error) {
+                console.error('Error loading commodity data:', error);
+            }
+        }
+
+        function updateDashboard() {
+            // Update stats
+            // "Total Commodities" should come from master dataset
+            document.getElementById('totalCommodities').textContent = allMasterData.length;
+            document.getElementById('totalItems').textContent = allImpactData.reduce((sum, d) => sum + (d.item_count || 0), 0);
+            
+            const avgVol = allImpactData.length > 0 
+                ? (allImpactData.reduce((sum, d) => sum + (d.cost_volatility_pct || 0), 0) / allImpactData.length).toFixed(2)
+                : '0';
+            document.getElementById('avgVolatility').textContent = avgVol + '%';
+            
+            const highRisk = allImpactData.filter(d => d.risk_level === 'High').length;
+            document.getElementById('riskCommodities').textContent = highRisk;
+            
+            // Populate commodity filter
+            const commodities = [...new Set(allImpactData.map(d => d.commodity_name))].sort();
+            const commoditySelect = document.getElementById('commodityFilter');
+            if (commoditySelect.options.length === 1) {
+                commodities.forEach(commodity => {
+                    const option = document.createElement('option');
+                    option.value = commodity;
+                    option.textContent = commodity;
+                    commoditySelect.appendChild(option);
+                });
+            }
+            
+            // Update all charts and tables
+            updateCommodityChart();
+            updateCommodityCountChart();
+            updateCommodityImpactChart();
+            updateRiskChart();
+            updateCommodityTable();
+            updateImpactTable();
+        }
+
+        function getFilteredData() {
+            let filtered = [...allImpactData];
+            const selectedCommodity = document.getElementById('commodityFilter').value;
+            const selectedRisk = document.getElementById('riskFilter').value;
+            
+            if (selectedCommodity) {
+                filtered = filtered.filter(item => item.commodity_name === selectedCommodity);
+            }
+            
+            if (selectedRisk) {
+                filtered = filtered.filter(item => item.risk_level === selectedRisk);
+            }
+            
+            return filtered;
+        }
+
+        function updateCommodityChart() {
+            if (!allCommodityData || allCommodityData.length === 0) return;
+            
+            const ctx = document.getElementById('commodityChart');
+            if (!ctx) return;
+            
+            const context = ctx.getContext('2d');
+            
+            if (commodityChart) commodityChart.destroy();
+            
+            // Get all unique dates
+            const allDates = new Set();
+            allCommodityData.forEach(commodity => {
+                if (commodity.data && Array.isArray(commodity.data)) {
+                    commodity.data.forEach(point => {
+                        allDates.add(point.date);
+                    });
+                }
+            });
+            const sortedDates = Array.from(allDates).sort();
+            
+            // Create datasets for each commodity
+            const datasets = allCommodityData.map((commodity, idx) => {
+                const dataPoints = sortedDates.map(date => {
+                    const point = commodity.data.find(d => d.date === date);
+                    return point ? point.cost_index : null;
+                });
+                
+                return {
+                    label: commodity.commodity_name,
+                    data: dataPoints,
+                    borderColor: colors[idx % colors.length],
+                    backgroundColor: colors[idx % colors.length] + '20',
+                    tension: 0.3,
+                    fill: false,
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                };
+            });
+            
+            commodityChart = new Chart(context, {
+                type: 'line',
+                data: {
+                    labels: sortedDates,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, padding: 10, font: { size: 9 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Cost Index'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCommodityCountChart() {
+            if (!allImpactData || allImpactData.length === 0) return;
+            
+            const ctx = document.getElementById('commodityCountChart');
+            if (!ctx) return;
+            
+            const context = ctx.getContext('2d');
+            
+            if (commodityCountChart) commodityCountChart.destroy();
+            
+            commodityCountChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: allImpactData.map(item => item.commodity_name),
+                    datasets: [{
+                        label: 'Number of Items',
+                        data: allImpactData.map(item => item.item_count),
+                        backgroundColor: colors.slice(0, allImpactData.length),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 15 }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCommodityImpactChart() {
+            if (!allImpactData || allImpactData.length === 0) return;
+            
+            const ctx = document.getElementById('commodityImpactChart');
+            if (!ctx) return;
+            
+            const context = ctx.getContext('2d');
+            
+            if (commodityImpactChart) commodityImpactChart.destroy();
+            
+            commodityImpactChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: allImpactData.map(item => item.commodity_name),
+                    datasets: [{
+                        label: 'Cost Impact Score',
+                        data: allImpactData.map(item => item.impact_score),
+                        backgroundColor: colors.slice(0, allImpactData.length),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 15 }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateRiskChart() {
+            if (!allImpactData || allImpactData.length === 0) return;
+            
+            // Count by risk level
+            const riskCounts = { 'High': 0, 'Medium': 0, 'Low': 0 };
+            allImpactData.forEach(item => {
+                if (riskCounts.hasOwnProperty(item.risk_level)) {
+                    riskCounts[item.risk_level]++;
+                }
+            });
+            
+            const ctx = document.getElementById('riskChart');
+            if (!ctx) return;
+            
+            const context = ctx.getContext('2d');
+            
+            if (riskChart) riskChart.destroy();
+            
+            riskChart = new Chart(context, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(riskCounts),
+                    datasets: [{
+                        data: Object.values(riskCounts),
+                        backgroundColor: ['#fa709a', '#f5a623', '#43e97b'],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { usePointStyle: true, padding: 15 }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCommodityTable() {
+            // Use the master commodity data (allMasterData) rather than impact
+            // records, since the table is intended to show static master fields.
+            const tbody = document.getElementById('commodityTable');
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+
+            allMasterData.forEach(item => {
+                const row = document.createElement('tr');
+                const hedging = item.Hedging_Eligible === 'Y' ? '✓' : '✗';
+                const riskColor = item.Risk_Level === 'High' ? '#fa709a' :
+                                 item.Risk_Level === 'Medium' ? '#f5a623' : '#43e97b';
+
+                row.innerHTML = `
+                    <td><strong>${item.Commodity_Name}</strong></td>
+                    <td>${item.Component_Type || '-'}</td>
+                    <td>${item.Base_Unit || '-'}</td>
+                    <td>${item.Commodity_Group || '-'}</td>
+                    <td style="color: ${riskColor}; font-weight: bold;">${item.Risk_Level || '-'}</td>
+                    <td>${item.Volatility_Class || '-'}</td>
+                    <td style="text-align: center;">${hedging}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateImpactTable() {
+            const tbody = document.getElementById('impactTable');
+            if (!tbody) return;
+            
+            const filtered = getFilteredData();
+            tbody.innerHTML = '';
+            
+            filtered.forEach(item => {
+                const row = document.createElement('tr');
+                const riskColor = item.risk_level === 'High' ? '#fa709a' : 
+                                 item.risk_level === 'Medium' ? '#f5a623' : '#43e97b';
+                
+                row.innerHTML = `
+                    <td><strong>${item.commodity_name}</strong></td>
+                    <td class="number">${item.item_count || 0}</td>
+                    <td class="number"><strong>${(item.impact_score || 0).toFixed(2)}</strong></td>
+                    <td class="number">${(item.cost_volatility_pct || 0).toFixed(2)}%</td>
+                    <td style="color: ${riskColor}; font-weight: bold;">${item.risk_level || '-'}</td>
+                    <td>${item.key_drivers || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('commodityFilter').value = '';
+            document.getElementById('riskFilter').value = '';
+            updateDashboard();
+        }
+
+        // Event listeners
+        document.getElementById('commodityFilter').addEventListener('change', updateImpactTable);
+        document.getElementById('riskFilter').addEventListener('change', updateImpactTable);
+        
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>

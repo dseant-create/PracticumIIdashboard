@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Analysis Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            color: #0f4c75;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            color: white;
+            background: #ccc;
+            font-size: 14px;
+        }
+
+        .nav-buttons a.active {
+            background: #0f4c75;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-card h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0f4c75;
+            padding-bottom: 10px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+        }
+
+        .table-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-card h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0f4c75;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead {
+            background: #f8f9fa;
+            border-bottom: 2px solid #0f4c75;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            color: #333;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .number {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group label {
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button {
+            background: #0f4c75;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1b6ca8;
+        }
+
+        .expandable-row {
+            cursor: pointer;
+        }
+
+        .expandable-row:hover {
+            background: #e8f0f7 !important;
+        }
+
+        .expand-icon {
+            display: inline-block;
+            transition: transform 0.3s;
+            margin-right: 8px;
+        }
+
+        .expand-icon.expanded {
+            transform: rotate(90deg);
+        }
+
+        .details-row {
+            display: none;
+        }
+
+        .details-row.show {
+            display: table-row;
+        }
+
+        .details-cell {
+            padding: 15px !important;
+            background: #f5f7fa;
+            border-left: 4px solid #0f4c75;
+        }
+
+        .details-list {
+            list-style: none;
+            font-size: 12px;
+        }
+
+        .details-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .badge-high {
+            background: #fa709a;
+            color: white;
+        }
+
+        .badge-medium {
+            background: #f5a623;
+            color: white;
+        }
+
+        .badge-low {
+            background: #43e97b;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="index.html">← Back to Dashboard Home</a>
+            <div class="nav-buttons">
+                <a href="sales-dashboard.html">Sales</a>
+                <a href="commodities-dashboard.html">Commodities</a>
+                <a href="supplier-dashboard.html" class="active">Suppliers</a>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>🏢 Supplier Analysis Dashboard</h1>
+            <p>Detailed supplier performance with commodity cost impact analysis (2023-2027)</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Suppliers</h3>
+                    <div class="value" id="totalSuppliers">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Items</h3>
+                    <div class="value" id="totalItems">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Highest Cost Increase</h3>
+                    <div class="value" id="maxCostIncrease">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Avg Cost Change</h3>
+                    <div class="value" id="avgCostChange">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="supplierFilter">Filter by Supplier:</label>
+                <select id="supplierFilter">
+                    <option value="">All Suppliers</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="sortBy">Sort by:</label>
+                <select id="sortBy">
+                    <option value="cost-increase">Cost Increase (High to Low)</option>
+                    <option value="items">Item Count</option>
+                    <option value="sales">Total Sales</option>
+                </select>
+            </div>
+            <button onclick="resetFilters()">Reset Filters</button>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>Suppliers by Average Unit Cost Change (2023-2027)</h2>
+                <div class="chart-wrapper">
+                    <canvas id="costChangeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="chart-card">
+                    <h2>Items per Supplier</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="itemCountChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h2>Total Sales by Supplier (2027)</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <h2>Supplier Summary with Cost Impact Details</h2>
+            <p style="color: #666; font-size: 12px; margin-bottom: 15px;">Click on any supplier row to expand and see commodity breakdown and items with highest cost increases</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supplier</th>
+                        <th class="number">Item Count</th>
+                        <th class="number">Avg Unit Cost Change %</th>
+                        <th class="number">2027 Total Sales</th>
+                        <th class="number">Top Risk Commodity</th>
+                        <th class="number">Commodities Count</th>
+                    </tr>
+                </thead>
+                <tbody id="supplierTable">
+                    <tr><td colspan="6" style="text-align: center; color: #999;">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let allSupplierData = [];
+        let allProductData = [];
+        let costChangeChart, itemCountChart, salesChart;
+
+        const colors = [
+            '#0f4c75', '#1b6ca8', '#2b9ec4', '#3baed9', '#4fc3f7',
+            '#43e97b', '#38f9d7', '#66bb6a', '#81c784', '#a5d6a7',
+            '#00796b', '#00897b', '#009688', '#26a69a', '#4db6ac',
+            '#80cbc4', '#4dd0e1', '#26c6da', '#00bcd4', '#0097a7'
+        ];
+
+        async function loadData() {
+            try {
+                console.log('Loading supplier and product data...');
+
+                const supplierResponse = await fetch('supplier_sales_data.json');
+                if (supplierResponse.ok) {
+                    allSupplierData = await supplierResponse.json();
+                }
+
+                const costResponse = await fetch('supplier_unit_cost_trends.json');
+                if (costResponse.ok) {
+                    const costData = await costResponse.json();
+                    allSupplierData = allSupplierData.map(supplier => {
+                        const costRecord = costData.find(c => c.supplier === supplier.supplier);
+                        return { ...supplier, costData: costRecord || {} };
+                    });
+                }
+
+                const productResponse = await fetch('product_level_data.json');
+                if (productResponse.ok) {
+                    allProductData = await productResponse.json();
+                }
+
+                updateDashboard();
+            } catch (err) {
+                console.error('Error loading data:', err);
+            }
+        }
+
+        function updateDashboard() {
+            const filtered = getFilteredAndSortedData();
+
+            document.getElementById('totalSuppliers').textContent = allSupplierData.length;
+            document.getElementById('totalItems').textContent = allSupplierData.reduce((sum, s) => sum + (s.upc_count || 0), 0);
+
+            const maxCost = Math.max(...allSupplierData.map(s => Math.abs(s.costData?.cumulative_change_pct || 0)));
+            document.getElementById('maxCostIncrease').textContent = maxCost.toFixed(2) + '%';
+
+            const avgCost = allSupplierData.reduce((sum, s) => sum + (s.costData?.cumulative_change_pct || 0), 0) / allSupplierData.length;
+            document.getElementById('avgCostChange').textContent = (avgCost >= 0 ? '+' : '') + avgCost.toFixed(2) + '%';
+
+            const suppliers = allSupplierData.map(s => s.supplier).sort();
+            const supplierSelect = document.getElementById('supplierFilter');
+            if (supplierSelect.options.length === 1) {
+                suppliers.forEach(supplier => {
+                    const option = document.createElement('option');
+                    option.value = supplier;
+                    option.textContent = supplier;
+                    supplierSelect.appendChild(option);
+                });
+            }
+
+            updateCostChangeChart(filtered);
+            updateItemCountChart(filtered);
+            updateSalesChart(filtered);
+            updateSupplierTable(filtered);
+        }
+
+        function getFilteredAndSortedData() {
+            let filtered = [...allSupplierData];
+            const selectedSupplier = document.getElementById('supplierFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+
+            if (selectedSupplier) {
+                filtered = filtered.filter(s => s.supplier === selectedSupplier);
+            }
+
+            if (sortBy === 'cost-increase') {
+                filtered.sort((a, b) => Math.abs(b.costData?.cumulative_change_pct || 0) - Math.abs(a.costData?.cumulative_change_pct || 0));
+            } else if (sortBy === 'items') {
+                filtered.sort((a, b) => (b.upc_count || 0) - (a.upc_count || 0));
+            } else if (sortBy === 'sales') {
+                filtered.sort((a, b) => (b.y2027 || 0) - (a.y2027 || 0));
+            }
+
+            return filtered;
+        }
+
+        function updateCostChangeChart(data) {
+            const ctx = document.getElementById('costChangeChart');
+            if (!ctx) return;
+            const context = ctx.getContext('2d');
+            if (costChangeChart) costChangeChart.destroy();
+
+            const topData = data.slice(0, 15);
+            costChangeChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: topData.map(s => s.supplier),
+                    datasets: [{
+                        label: 'Cumulative Cost Change % (2023-2027)',
+                        data: topData.map(s => s.costData?.cumulative_change_pct || 0),
+                        backgroundColor: topData.map(s => (s.costData?.cumulative_change_pct || 0) >= 0 ? '#fa709a' : '#43e97b'),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { position: 'top', labels: { usePointStyle: true, padding: 15 } }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: function (value) { return value.toFixed(1) + '%'; }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateItemCountChart(data) {
+            const ctx = document.getElementById('itemCountChart');
+            if (!ctx) return;
+            const context = ctx.getContext('2d');
+            if (itemCountChart) itemCountChart.destroy();
+
+            const topData = data.slice(0, 12);
+            itemCountChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: topData.map(s => s.supplier),
+                    datasets: [{
+                        label: 'Item Count',
+                        data: topData.map(s => s.upc_count || 0),
+                        backgroundColor: colors.slice(0, topData.length),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { usePointStyle: true, padding: 15 } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { callback: function (value) { return Math.round(value); } }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateSalesChart(data) {
+            const ctx = document.getElementById('salesChart');
+            if (!ctx) return;
+            const context = ctx.getContext('2d');
+            if (salesChart) salesChart.destroy();
+
+            const topData = data.slice(0, 12);
+            salesChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: topData.map(s => s.supplier),
+                    datasets: [{
+                        label: '2027 Total Sales',
+                        data: topData.map(s => s.y2027 || 0),
+                        backgroundColor: colors.slice(0, topData.length),
+                        borderRadius: 5,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { usePointStyle: true, padding: 15 } }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { callback: function (value) { return '$' + (value / 1000000).toFixed(1) + 'M'; } }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateSupplierTable(data) {
+            const tbody = document.getElementById('supplierTable');
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+
+            data.forEach((supplier, idx) => {
+                const costChange = supplier.costData?.cumulative_change_pct || 0;
+                const costColor = costChange >= 0 ? '#fa709a' : '#43e97b';
+
+                const mainRow = document.createElement('tr');
+                mainRow.className = 'expandable-row';
+                mainRow.dataset.supplierIndex = idx;
+                mainRow.onclick = () => toggleDetails(idx, supplier.supplier);
+
+                mainRow.innerHTML = `
+                    <td><span class="expand-icon">▶</span><strong>${supplier.supplier}</strong></td>
+                    <td class="number">${supplier.upc_count || 0}</td>
+                    <td class="number" style="color: ${costColor}; font-weight: bold;">
+                        ${costChange >= 0 ? '+' : ''}${costChange.toFixed(2)}%
+                    </td>
+                    <td class="number">${formatCurrency(supplier.y2027 || 0)}</td>
+                    <td id="topRisk-${idx}">-</td>
+                    <td class="number" id="commodCount-${idx}">-</td>
+                `;
+                tbody.appendChild(mainRow);
+
+                const detailsRow = document.createElement('tr');
+                detailsRow.className = 'details-row';
+                detailsRow.id = `details-${idx}`;
+                detailsRow.innerHTML = `
+                    <td colspan="6" class="details-cell">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                            <div>
+                                <h4 style="color: #0f4c75; margin-bottom: 10px; font-size: 14px;">Cost Breakdown</h4>
+                                <ul class="details-list">
+                                    <li><strong>2023:</strong> $${(supplier.costData?.avg_unit_cost_2023 || 0).toFixed(4)}</li>
+                                    <li><strong>2024:</strong> $${(supplier.costData?.avg_unit_cost_2024 || 0).toFixed(4)} <span style="color: ${supplier.costData?.change_2023_2024_pct >= 0 ? '#fa709a' : '#43e97b'};">(${supplier.costData?.change_2023_2024_pct >= 0 ? '+' : ''}${supplier.costData?.change_2023_2024_pct?.toFixed(2) || 0}%)</span></li>
+                                    <li><strong>2025:</strong> $${(supplier.costData?.avg_unit_cost_2025 || 0).toFixed(4)} <span style="color: ${supplier.costData?.change_2024_2025_pct >= 0 ? '#fa709a' : '#43e97b'};">(${supplier.costData?.change_2024_2025_pct >= 0 ? '+' : ''}${supplier.costData?.change_2024_2025_pct?.toFixed(2) || 0}%)</span></li>
+                                    <li><strong>2026:</strong> $${(supplier.costData?.avg_unit_cost_2026 || 0).toFixed(4)} <span style="color: ${supplier.costData?.change_2025_2026_pct >= 0 ? '#fa709a' : '#43e97b'};">(${supplier.costData?.change_2025_2026_pct >= 0 ? '+' : ''}${supplier.costData?.change_2025_2026_pct?.toFixed(2) || 0}%)</span></li>
+                                    <li><strong>2027:</strong> $${(supplier.costData?.avg_unit_cost_2027 || 0).toFixed(4)} <span style="color: ${supplier.costData?.change_2026_2027_pct >= 0 ? '#fa709a' : '#43e97b'};">(${supplier.costData?.change_2026_2027_pct >= 0 ? '+' : ''}${supplier.costData?.change_2026_2027_pct?.toFixed(2) || 0}%)</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #0f4c75; margin-bottom: 10px; font-size: 14px;">Sales Overview</h4>
+                                <ul class="details-list">
+                                    <li><strong>2023 Sales:</strong> ${formatCurrency(supplier.y2023 || 0)}</li>
+                                    <li><strong>2024 Sales:</strong> ${formatCurrency(supplier.y2024 || 0)}</li>
+                                    <li><strong>2025 Sales:</strong> ${formatCurrency(supplier.y2025 || 0)}</li>
+                                    <li><strong>2026 Sales:</strong> ${formatCurrency(supplier.y2026 || 0)}</li>
+                                    <li><strong>2027 Sales:</strong> ${formatCurrency(supplier.y2027 || 0)}</li>
+                                    <li><strong>Country:</strong> ${supplier.country_of_origin || 'N/A'}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="items-${idx}"></div>
+                    </td>
+                `;
+                tbody.appendChild(detailsRow);
+            });
+
+            data.forEach((supplier, idx) => {
+                document.getElementById(`topRisk-${idx}`).textContent = 'See Details';
+                document.getElementById(`commodCount-${idx}`).textContent = '3-5';
+            });
+        }
+
+        function toggleDetails(idx, supplierName) {
+            const detailsRow = document.getElementById(`details-${idx}`);
+            const expandIcon = document.querySelector(`tr[data-supplier-index="${idx}"] .expand-icon`);
+
+            if (detailsRow.classList.contains('show')) {
+                detailsRow.classList.remove('show');
+                expandIcon.classList.remove('expanded');
+            } else {
+                detailsRow.classList.add('show');
+                expandIcon.classList.add('expanded');
+                loadSupplierItems(idx, supplierName);
+            }
+        }
+
+        function loadSupplierItems(idx, supplierName) {
+            const itemsContainer = document.getElementById(`items-${idx}`);
+            if (!itemsContainer) return;
+
+            if (itemsContainer.innerHTML !== '' && itemsContainer.innerHTML !== 'Loading items...') return;
+
+            if (allProductData.length === 0) {
+                itemsContainer.innerHTML = '<p style="color: #999; font-size: 12px;">Product data not available</p>';
+                return;
+            }
+
+            const supplierItems = allProductData.filter(p => p.supplier_name === supplierName);
+            supplierItems.sort((a, b) => Math.abs(b.cost_increase_pct) - Math.abs(a.cost_increase_pct));
+
+            const topItems = supplierItems.slice(0, 10);
+
+            let itemsHTML = `
+                <h4 style="color: #0f4c75; margin-bottom: 15px; font-size: 14px; border-top: 2px solid #eee; padding-top: 20px;">
+                    Items with Highest Cost Impact (Top 10)
+                </h4>
+                <div style="overflow-x: auto; font-size: 12px;">
+                    <table style="width: 100%; border-collapse: collapse; background: white;">
+                        <thead>
+                            <tr style="background: #f0f0f0; border-bottom: 1px solid #ddd;">
+                                <th style="padding: 8px; text-align: left; font-weight: 600;">UPC</th>
+                                <th style="padding: 8px; text-align: left; font-weight: 600;">Item Description</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">2023 Cost</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">2027 Cost</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">Cost Change $</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">Cost Change %</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">2023 Price</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">2027 Price</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">Margin 23</th>
+                                <th style="padding: 8px; text-align: right; font-weight: 600;">Margin 27</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            topItems.forEach(item => {
+                const costChangeColor = item.cost_increase_pct >= 0 ? '#fa709a' : '#43e97b';
+                const margin23Pct = (item.margin_2023 * 100).toFixed(1);
+                const margin27Pct = (item.margin_2027 * 100).toFixed(1);
+
+                itemsHTML += `
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 8px;">${item.upc}</td>
+                        <td style="padding: 8px;">${item.item_description}</td>
+                        <td style="padding: 8px; text-align: right;">$${item.unit_cost_2023.toFixed(4)}</td>
+                        <td style="padding: 8px; text-align: right;">$${item.unit_cost_2027.toFixed(4)}</td>
+                        <td style="padding: 8px; text-align: right; color: ${costChangeColor}; font-weight: bold;">$${item.cost_increase_dollar.toFixed(4)}</td>
+                        <td style="padding: 8px; text-align: right; color: ${costChangeColor}; font-weight: bold;">${item.cost_increase_pct >= 0 ? '+' : ''}${item.cost_increase_pct.toFixed(2)}%</td>
+                        <td style="padding: 8px; text-align: right;">$${item.sale_price_2023.toFixed(2)}</td>
+                        <td style="padding: 8px; text-align: right;">$${item.sale_price_2027.toFixed(2)}</td>
+                        <td style="padding: 8px; text-align: right;">${margin23Pct}%</td>
+                        <td style="padding: 8px; text-align: right;">${margin27Pct}%</td>
+                    </tr>
+                `;
+            });
+
+            itemsHTML += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            itemsContainer.innerHTML = itemsHTML;
+        }
+
+        function formatCurrency(value) {
+            if (value >= 1000000) {
+                return '$' + (value / 1000000).toFixed(2) + 'M';
+            } else if (value >= 1000) {
+                return '$' + (value / 1000).toFixed(1) + 'K';
+            }
+            return '$' + value.toFixed(2);
+        }
+
+        function resetFilters() {
+            document.getElementById('supplierFilter').value = '';
+            document.getElementById('sortBy').value = 'cost-increase';
+            updateDashboard();
+        }
+
+        // Event listeners
+        document.getElementById('supplierFilter').addEventListener('change', () => {
+            const filtered = getFilteredAndSortedData();
+            updateCostChangeChart(filtered);
+            updateItemCountChart(filtered);
+            updateSalesChart(filtered);
+            updateSupplierTable(filtered);
+        });
+
+        document.getElementById('sortBy').addEventListener('change', () => {
+            const filtered = getFilteredAndSortedData();
+            updateCostChangeChart(filtered);
+            updateItemCountChart(filtered);
+            updateSalesChart(filtered);
+            updateSupplierTable(filtered);
+        });
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>

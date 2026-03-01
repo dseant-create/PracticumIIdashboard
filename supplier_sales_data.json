@@ -1,210 +1,262 @@
 [
   {
-    "supplier": "Kraft Heinz",
-    "country_of_origin": "USA",
-    "upc_count": 37,
-    "y2023": 31368202.78,
-    "y2024": 31317959.86,
-    "y2025": 33229302.62
-  },
-  {
-    "supplier": "The Clorox Company",
-    "country_of_origin": "USA",
-    "upc_count": 44,
-    "y2023": 33934912.55,
-    "y2024": 33285608.8,
-    "y2025": 32834746.74
-  },
-  {
-    "supplier": "Unilever",
-    "country_of_origin": "USA",
-    "upc_count": 36,
-    "y2023": 31603019.29,
-    "y2024": 32093689.87,
-    "y2025": 32435047.54
-  },
-  {
-    "supplier": "Mondelez International",
-    "country_of_origin": "USA",
-    "upc_count": 48,
-    "y2023": 30206479.23,
-    "y2024": 30497646.63,
-    "y2025": 31113962.86
-  },
-  {
-    "supplier": "Kimberly-Clark",
-    "country_of_origin": "USA",
-    "upc_count": 42,
-    "y2023": 29625728.96,
-    "y2024": 30051666.06,
-    "y2025": 31060381.43
-  },
-  {
-    "supplier": "Johnson & Johnson",
-    "country_of_origin": "USA",
-    "upc_count": 41,
-    "y2023": 28826879.32,
-    "y2024": 28579785.24,
-    "y2025": 29344127.77
-  },
-  {
     "supplier": "Nestl\u00e9",
     "country_of_origin": "USA",
-    "upc_count": 44,
-    "y2023": 28860990.8,
-    "y2024": 29457454.03,
-    "y2025": 28986732.95
-  },
-  {
-    "supplier": "Henkel",
-    "country_of_origin": "USA",
-    "upc_count": 42,
-    "y2023": 29319190.25,
-    "y2024": 28557696.5,
-    "y2025": 28248865.02
-  },
-  {
-    "supplier": "Maruchan",
-    "country_of_origin": "China",
-    "upc_count": 38,
-    "y2023": 28242588.46,
-    "y2024": 29219748.72,
-    "y2025": 28244910.7
-  },
-  {
-    "supplier": "Colgate-Palmolive",
-    "country_of_origin": "USA",
-    "upc_count": 36,
-    "y2023": 25609948.79,
-    "y2024": 27422857.58,
-    "y2025": 27466538.94
-  },
-  {
-    "supplier": "Tyson Foods",
-    "country_of_origin": "USA",
-    "upc_count": 34,
-    "y2023": 27557508.51,
-    "y2024": 27430718.87,
-    "y2025": 27082283.53
-  },
-  {
-    "supplier": "Church & Dwight",
-    "country_of_origin": "USA",
-    "upc_count": 30,
-    "y2023": 27186589.22,
-    "y2024": 27498840.4,
-    "y2025": 26628762.07
-  },
-  {
-    "supplier": "Dabur",
-    "country_of_origin": "India",
-    "upc_count": 32,
-    "y2023": 25702290.86,
-    "y2024": 26078892.27,
-    "y2025": 26336048.64
-  },
-  {
-    "supplier": "Godrej Consumer Products",
-    "country_of_origin": "India",
-    "upc_count": 39,
-    "y2023": 24022624.97,
-    "y2024": 25459661.77,
-    "y2025": 26217643.04
-  },
-  {
-    "supplier": "Conagra Brands",
-    "country_of_origin": "USA",
-    "upc_count": 41,
-    "y2023": 26212655.67,
-    "y2024": 25720456.6,
-    "y2025": 25939606.61
-  },
-  {
-    "supplier": "SC Johnson",
-    "country_of_origin": "USA",
-    "upc_count": 37,
-    "y2023": 27887725.64,
-    "y2024": 27497588.08,
-    "y2025": 25752788.98
-  },
-  {
-    "supplier": "Grupo Bimbo",
-    "country_of_origin": "Mexico",
-    "upc_count": 49,
-    "y2023": 25327959.07,
-    "y2024": 25372567.85,
-    "y2025": 25635463.87
-  },
-  {
-    "supplier": "ITC Limited",
-    "country_of_origin": "India",
-    "upc_count": 36,
-    "y2023": 25934430.1,
-    "y2024": 25454555.53,
-    "y2025": 25545857.36
+    "y2023": 34477895.5,
+    "y2024": 35078188.79,
+    "y2025": 34779801.23,
+    "y2026": 35556111.01,
+    "y2027": 35491837.82,
+    "upc_count": 41
   },
   {
     "supplier": "PepsiCo",
     "country_of_origin": "USA",
-    "upc_count": 41,
-    "y2023": 26677800.99,
-    "y2024": 26492241.42,
-    "y2025": 24755481.99
-  },
-  {
-    "supplier": "Reckitt",
-    "country_of_origin": "USA",
-    "upc_count": 35,
-    "y2023": 23368580.34,
-    "y2024": 22688532.0,
-    "y2025": 23127076.93
-  },
-  {
-    "supplier": "Procter & Gamble",
-    "country_of_origin": "USA",
-    "upc_count": 45,
-    "y2023": 22722524.77,
-    "y2024": 22796352.11,
-    "y2025": 23015480.26
-  },
-  {
-    "supplier": "The Coca-Cola Company",
-    "country_of_origin": "USA",
-    "upc_count": 37,
-    "y2023": 23220705.1,
-    "y2024": 22633056.15,
-    "y2025": 22743116.71
+    "y2023": 30513945.14,
+    "y2024": 30730639.12,
+    "y2025": 31511098.06,
+    "y2026": 34116674.52,
+    "y2027": 34830790.0,
+    "upc_count": 44
   },
   {
     "supplier": "Gruma",
     "country_of_origin": "Mexico",
-    "upc_count": 40,
-    "y2023": 23138831.64,
-    "y2024": 22402889.61,
-    "y2025": 22468007.16
+    "y2023": 28514449.6,
+    "y2024": 29695608.75,
+    "y2025": 30538868.15,
+    "y2026": 30391894.14,
+    "y2027": 30445047.81,
+    "upc_count": 41
+  },
+  {
+    "supplier": "Procter & Gamble",
+    "country_of_origin": "USA",
+    "y2023": 27717767.06,
+    "y2024": 28357329.57,
+    "y2025": 28636986.03,
+    "y2026": 29009645.72,
+    "y2027": 30186257.0,
+    "upc_count": 38
+  },
+  {
+    "supplier": "Reckitt",
+    "country_of_origin": "USA",
+    "y2023": 28960325.21,
+    "y2024": 27955778.01,
+    "y2025": 28356173.87,
+    "y2026": 29021894.82,
+    "y2027": 30016776.83,
+    "upc_count": 42
   },
   {
     "supplier": "General Mills",
     "country_of_origin": "USA",
-    "upc_count": 32,
-    "y2023": 21870464.02,
-    "y2024": 20789056.58,
-    "y2025": 21153579.98
+    "y2023": 30911641.66,
+    "y2024": 31470422.1,
+    "y2025": 30287857.41,
+    "y2026": 30114724.25,
+    "y2027": 29870312.0,
+    "upc_count": 44
+  },
+  {
+    "supplier": "Johnson & Johnson",
+    "country_of_origin": "USA",
+    "y2023": 25789017.61,
+    "y2024": 26515139.39,
+    "y2025": 27997085.96,
+    "y2026": 27275277.02,
+    "y2027": 28544461.75,
+    "upc_count": 36
+  },
+  {
+    "supplier": "Godrej Consumer Products",
+    "country_of_origin": "India",
+    "y2023": 28063716.68,
+    "y2024": 27489577.15,
+    "y2025": 27576562.5,
+    "y2026": 26912594.46,
+    "y2027": 27767977.89,
+    "upc_count": 42
   },
   {
     "supplier": "Ferrero",
     "country_of_origin": "USA",
-    "upc_count": 34,
-    "y2023": 21266692.31,
-    "y2024": 20731875.46,
-    "y2025": 20889536.55
+    "y2023": 29827215.25,
+    "y2024": 29279820.12,
+    "y2025": 28340398.56,
+    "y2026": 27613227.19,
+    "y2027": 27462557.59,
+    "upc_count": 43
+  },
+  {
+    "supplier": "Unilever",
+    "country_of_origin": "USA",
+    "y2023": 30273008.26,
+    "y2024": 29928352.74,
+    "y2025": 29068374.79,
+    "y2026": 28588802.68,
+    "y2027": 27411327.96,
+    "upc_count": 45
+  },
+  {
+    "supplier": "The Clorox Company",
+    "country_of_origin": "USA",
+    "y2023": 25307114.82,
+    "y2024": 26449946.13,
+    "y2025": 26085549.37,
+    "y2026": 26667325.5,
+    "y2027": 27291543.93,
+    "upc_count": 40
+  },
+  {
+    "supplier": "The Coca-Cola Company",
+    "country_of_origin": "USA",
+    "y2023": 27744037.37,
+    "y2024": 27516142.45,
+    "y2025": 26606959.68,
+    "y2026": 27537667.13,
+    "y2027": 27172013.65,
+    "upc_count": 43
+  },
+  {
+    "supplier": "Mondelez International",
+    "country_of_origin": "USA",
+    "y2023": 25400997.96,
+    "y2024": 26559503.51,
+    "y2025": 26623552.72,
+    "y2026": 26325102.97,
+    "y2027": 26578994.02,
+    "upc_count": 33
   },
   {
     "supplier": "Frito-Lay",
     "country_of_origin": "USA",
-    "upc_count": 30,
-    "y2023": 16569883.71,
-    "y2024": 16578918.49,
-    "y2025": 15994975.46
+    "y2023": 25726504.36,
+    "y2024": 26806072.2,
+    "y2025": 26248195.36,
+    "y2026": 26156208.43,
+    "y2027": 25750547.54,
+    "upc_count": 43
+  },
+  {
+    "supplier": "Maruchan",
+    "country_of_origin": "China",
+    "y2023": 22759527.93,
+    "y2024": 22486370.98,
+    "y2025": 22540377.85,
+    "y2026": 22990387.68,
+    "y2027": 24688382.09,
+    "upc_count": 35
+  },
+  {
+    "supplier": "Grupo Bimbo",
+    "country_of_origin": "Mexico",
+    "y2023": 22771257.16,
+    "y2024": 22746910.01,
+    "y2025": 23168160.34,
+    "y2026": 24428658.42,
+    "y2027": 24466612.35,
+    "upc_count": 38
+  },
+  {
+    "supplier": "Henkel",
+    "country_of_origin": "USA",
+    "y2023": 23302957.71,
+    "y2024": 22271408.8,
+    "y2025": 22866461.3,
+    "y2026": 23727504.39,
+    "y2027": 24389739.55,
+    "upc_count": 41
+  },
+  {
+    "supplier": "Dabur",
+    "country_of_origin": "India",
+    "y2023": 22077676.64,
+    "y2024": 23096463.26,
+    "y2025": 22950284.61,
+    "y2026": 23792291.73,
+    "y2027": 23100370.28,
+    "upc_count": 34
+  },
+  {
+    "supplier": "Kraft Heinz",
+    "country_of_origin": "USA",
+    "y2023": 22769516.3,
+    "y2024": 23244646.77,
+    "y2025": 22862594.4,
+    "y2026": 22692304.93,
+    "y2027": 22979448.41,
+    "upc_count": 39
+  },
+  {
+    "supplier": "ITC Limited",
+    "country_of_origin": "India",
+    "y2023": 25788742.56,
+    "y2024": 24245926.6,
+    "y2025": 23413970.58,
+    "y2026": 23385733.29,
+    "y2027": 22834589.83,
+    "upc_count": 40
+  },
+  {
+    "supplier": "SC Johnson",
+    "country_of_origin": "USA",
+    "y2023": 21905773.58,
+    "y2024": 21889456.9,
+    "y2025": 22497405.7,
+    "y2026": 22429716.49,
+    "y2027": 22358702.3,
+    "upc_count": 36
+  },
+  {
+    "supplier": "Church & Dwight",
+    "country_of_origin": "USA",
+    "y2023": 21000118.8,
+    "y2024": 20513170.11,
+    "y2025": 20810302.32,
+    "y2026": 21679597.09,
+    "y2027": 21423606.86,
+    "upc_count": 30
+  },
+  {
+    "supplier": "Tyson Foods",
+    "country_of_origin": "USA",
+    "y2023": 20592499.9,
+    "y2024": 20940408.53,
+    "y2025": 20550723.72,
+    "y2026": 19965284.73,
+    "y2027": 20344532.32,
+    "upc_count": 34
+  },
+  {
+    "supplier": "Conagra Brands",
+    "country_of_origin": "USA",
+    "y2023": 18163092.47,
+    "y2024": 18225030.79,
+    "y2025": 18138234.39,
+    "y2026": 18137464.49,
+    "y2027": 18280355.24,
+    "upc_count": 32
+  },
+  {
+    "supplier": "Kimberly-Clark",
+    "country_of_origin": "USA",
+    "y2023": 19662358.8,
+    "y2024": 18683880.09,
+    "y2025": 18005791.11,
+    "y2026": 17884758.21,
+    "y2027": 18125108.03,
+    "upc_count": 33
+  },
+  {
+    "supplier": "Colgate-Palmolive",
+    "country_of_origin": "USA",
+    "y2023": 17764873.6,
+    "y2024": 18093656.31,
+    "y2025": 18195680.99,
+    "y2026": 17370692.27,
+    "y2027": 18030788.12,
+    "upc_count": 33
   }
 ]

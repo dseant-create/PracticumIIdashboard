@@ -230,9 +230,17 @@
 </head>
 <body>
     <div class="container">
+        <div style="background: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: #0f4c75; font-weight: 600; font-size: 16px;">← Back to Dashboard Home</a>
+            <div style="display: flex; gap: 15px;">
+                <a href="sales-dashboard.html" style="padding: 8px 16px; background: #0f4c75; color: white; border-radius: 5px; text-decoration: none; font-weight: 600;">Sales</a>
+                <a href="commodities-dashboard.html" style="padding: 8px 16px; background: #ccc; color: #333; border-radius: 5px; text-decoration: none; font-weight: 600;">Commodities</a>
+                <a href="supplier-dashboard.html" style="padding: 8px 16px; background: #ccc; color: #333; border-radius: 5px; text-decoration: none; font-weight: 600;">Suppliers</a>
+            </div>
+        </div>
         <div class="header">
             <h1>📊 Annual Sales by Supplier Dashboard</h1>
-            <p>Comprehensive analysis of supplier performance across 2023-2025</p>
+            <p>Comprehensive analysis of supplier performance across 2023-2027</p>
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3>Total UPCs</h3>
@@ -254,6 +262,14 @@
                     <h3>2025 Total Sales</h3>
                     <div class="value" id="sales2025">-</div>
                 </div>
+                <div class="stat-card">
+                    <h3>2026 Total Sales</h3>
+                    <div class="value" id="sales2026">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>2027 Total Sales</h3>
+                    <div class="value" id="sales2027">-</div>
+                </div>
             </div>
         </div>
 
@@ -265,6 +281,8 @@
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>
                     <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
                 </select>
             </div>
             <div class="control-group">
@@ -353,9 +371,13 @@
                         <th class="number">2023 Sales</th>
                         <th class="number">2024 Sales</th>
                         <th class="number">2025 Sales</th>
+                        <th class="number">2026 Sales</th>
+                        <th class="number">2027 Sales</th>
                         <th class="number">23→24 Growth %</th>
                         <th class="number">24→25 Growth %</th>
-                        <th class="number">Total 3-Yr Sales</th>
+                        <th class="number">25→26 Growth %</th>
+                        <th class="number">26→27 Growth %</th>
+                        <th class="number">Total 5-Yr Sales</th>
                     </tr>
                 </thead>
                 <tbody id="detailTable">
@@ -373,8 +395,12 @@
                         <th class="number">2023 Avg Unit Cost</th>
                         <th class="number">2024 Avg Unit Cost</th>
                         <th class="number">2025 Avg Unit Cost</th>
+                        <th class="number">2026 Avg Unit Cost</th>
+                        <th class="number">2027 Avg Unit Cost</th>
                         <th class="number">23→24 Change %</th>
                         <th class="number">24→25 Change %</th>
+                        <th class="number">25→26 Change %</th>
+                        <th class="number">26→27 Change %</th>
                         <th class="number">Cumulative Change %</th>
                     </tr>
                 </thead>
@@ -483,10 +509,14 @@
             const total2023 = allData.reduce((sum, item) => sum + item.y2023, 0);
             const total2024 = allData.reduce((sum, item) => sum + item.y2024, 0);
             const total2025 = allData.reduce((sum, item) => sum + item.y2025, 0);
+            const total2026 = allData.reduce((sum, item) => sum + item.y2026, 0);
+            const total2027 = allData.reduce((sum, item) => sum + item.y2027, 0);
             
             document.getElementById('sales2023').textContent = formatCurrency(total2023);
             document.getElementById('sales2024').textContent = formatCurrency(total2024);
             document.getElementById('sales2025').textContent = formatCurrency(total2025);
+            document.getElementById('sales2026').textContent = formatCurrency(total2026);
+            document.getElementById('sales2027').textContent = formatCurrency(total2027);
             
             // Update charts
             updateCountryChart(filtered);
@@ -586,6 +616,20 @@
                             backgroundColor: colors[2],
                             borderRadius: 5,
                             borderSkipped: false
+                        },
+                        {
+                            label: '2026',
+                            data: data.map(item => item.y2026),
+                            backgroundColor: colors[9],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        },
+                        {
+                            label: '2027',
+                            data: data.map(item => item.y2027),
+                            backgroundColor: colors[10],
+                            borderRadius: 5,
+                            borderSkipped: false
                         }
                     ]
                 },
@@ -620,10 +664,10 @@
             lineChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['2023', '2024', '2025'],
+                    labels: ['2023', '2024', '2025', '2026', '2027'],
                     datasets: data.map((item, idx) => ({
                         label: item.supplier,
-                        data: [item.y2023, item.y2024, item.y2025],
+                        data: [item.y2023, item.y2024, item.y2025, item.y2026, item.y2027],
                         borderColor: colors[idx % colors.length],
                         backgroundColor: colors[idx % colors.length] + '20',
                         tension: 0.3,
@@ -702,14 +746,18 @@
             const dataWithGrowth = data.map(item => ({
                 supplier: item.supplier,
                 growth2324: item.y2023 > 0 ? ((item.y2024 - item.y2023) / item.y2023 * 100) : 0,
-                growth2425: item.y2024 > 0 ? ((item.y2025 - item.y2024) / item.y2024 * 100) : 0
+                growth2425: item.y2024 > 0 ? ((item.y2025 - item.y2024) / item.y2024 * 100) : 0,
+                growth2526: item.y2025 > 0 ? ((item.y2026 - item.y2025) / item.y2025 * 100) : 0,
+                growth2627: item.y2026 > 0 ? ((item.y2027 - item.y2026) / item.y2026 * 100) : 0
             }));
             
-            // Sort by 2024→2025 growth (descending)
-            dataWithGrowth.sort((a, b) => b.growth2425 - a.growth2425);
+            // Sort by 2026→2027 growth (descending)
+            dataWithGrowth.sort((a, b) => b.growth2627 - a.growth2627);
             
             const growth2324 = dataWithGrowth.map(item => item.growth2324);
             const growth2425 = dataWithGrowth.map(item => item.growth2425);
+            const growth2526 = dataWithGrowth.map(item => item.growth2526);
+            const growth2627 = dataWithGrowth.map(item => item.growth2627);
             
             growthChart = new Chart(ctx, {
                 type: 'bar',
@@ -727,6 +775,20 @@
                             label: '2024→2025 Growth %',
                             data: growth2425,
                             backgroundColor: colors[4],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        },
+                        {
+                            label: '2025→2026 Growth %',
+                            data: growth2526,
+                            backgroundColor: colors[5],
+                            borderRadius: 5,
+                            borderSkipped: false
+                        },
+                        {
+                            label: '2026→2027 Growth %',
+                            data: growth2627,
+                            backgroundColor: colors[6],
                             borderRadius: 5,
                             borderSkipped: false
                         }
@@ -769,7 +831,11 @@
                     ((item.y2024 - item.y2023) / item.y2023 * 100) : 0;
                 const growth2425 = item.y2024 > 0 ? 
                     ((item.y2025 - item.y2024) / item.y2024 * 100) : 0;
-                const total = item.y2023 + item.y2024 + item.y2025;
+                const growth2526 = item.y2025 > 0 ? 
+                    ((item.y2026 - item.y2025) / item.y2025 * 100) : 0;
+                const growth2627 = item.y2026 > 0 ? 
+                    ((item.y2027 - item.y2026) / item.y2026 * 100) : 0;
+                const total = item.y2023 + item.y2024 + item.y2025 + item.y2026 + item.y2027;
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -777,11 +843,19 @@
                     <td class="number">${formatCurrency(item.y2023)}</td>
                     <td class="number">${formatCurrency(item.y2024)}</td>
                     <td class="number">${formatCurrency(item.y2025)}</td>
+                    <td class="number">${formatCurrency(item.y2026)}</td>
+                    <td class="number">${formatCurrency(item.y2027)}</td>
                     <td class="number" style="color: ${growth2324 >= 0 ? '#43e97b' : '#fa709a'}">
                         ${growth2324 >= 0 ? '+' : ''}${growth2324.toFixed(2)}%
                     </td>
                     <td class="number" style="color: ${growth2425 >= 0 ? '#43e97b' : '#fa709a'}">
                         ${growth2425 >= 0 ? '+' : ''}${growth2425.toFixed(2)}%
+                    </td>
+                    <td class="number" style="color: ${growth2526 >= 0 ? '#43e97b' : '#fa709a'}">
+                        ${growth2526 >= 0 ? '+' : ''}${growth2526.toFixed(2)}%
+                    </td>
+                    <td class="number" style="color: ${growth2627 >= 0 ? '#43e97b' : '#fa709a'}">
+                        ${growth2627 >= 0 ? '+' : ''}${growth2627.toFixed(2)}%
                     </td>
                     <td class="number"><strong>${formatCurrency(total)}</strong></td>
                 `;
@@ -932,11 +1006,19 @@
                     <td class="number">$${item.avg_unit_cost_2023.toFixed(4)}</td>
                     <td class="number">$${item.avg_unit_cost_2024.toFixed(4)}</td>
                     <td class="number">$${item.avg_unit_cost_2025.toFixed(4)}</td>
+                    <td class="number">$${item.avg_unit_cost_2026.toFixed(4)}</td>
+                    <td class="number">$${item.avg_unit_cost_2027.toFixed(4)}</td>
                     <td class="number" style="color: ${item.change_2023_2024_pct >= 0 ? '#fa709a' : '#43e97b'}">
                         ${item.change_2023_2024_pct >= 0 ? '+' : ''}${item.change_2023_2024_pct.toFixed(2)}%
                     </td>
                     <td class="number" style="color: ${item.change_2024_2025_pct >= 0 ? '#fa709a' : '#43e97b'}">
                         ${item.change_2024_2025_pct >= 0 ? '+' : ''}${item.change_2024_2025_pct.toFixed(2)}%
+                    </td>
+                    <td class="number" style="color: ${item.change_2025_2026_pct >= 0 ? '#fa709a' : '#43e97b'}">
+                        ${item.change_2025_2026_pct >= 0 ? '+' : ''}${item.change_2025_2026_pct.toFixed(2)}%
+                    </td>
+                    <td class="number" style="color: ${item.change_2026_2027_pct >= 0 ? '#fa709a' : '#43e97b'}">
+                        ${item.change_2026_2027_pct >= 0 ? '+' : ''}${item.change_2026_2027_pct.toFixed(2)}%
                     </td>
                     <td class="number" style="color: ${item.cumulative_change_pct >= 0 ? '#fa709a' : '#43e97b'}; font-weight: bold;">
                         ${item.cumulative_change_pct >= 0 ? '+' : ''}${item.cumulative_change_pct.toFixed(2)}%
