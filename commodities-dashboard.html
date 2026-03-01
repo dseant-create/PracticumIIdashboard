@@ -423,15 +423,13 @@
                     console.log('Commodity data loaded:', allCommodityData.length);
                 }
                 
-                // Load commodity master data
-                const masterResponse = await fetch('commodity_master.csv');
-                if (masterResponse.ok) {
-                    // For now we'll load this as JSON from the JSON version if available
-                    const masterJsonResponse = await fetch('commodity_master.json');
-                    if (masterJsonResponse.ok) {
-                        allMasterData = await masterJsonResponse.json();
-                        console.log('Master data loaded:', allMasterData.length);
-                    }
+                // Load commodity master data directly from JSON (CSV path may differ when hosted)
+                const masterJsonResponse = await fetch('commodity_master.json');
+                if (masterJsonResponse.ok) {
+                    allMasterData = await masterJsonResponse.json();
+                    console.log('Master data loaded:', allMasterData.length);
+                } else {
+                    console.warn('Master data not available');
                 }
                 
                 // Load impact data
@@ -452,13 +450,14 @@
             // "Total Commodities" should come from master dataset
             document.getElementById('totalCommodities').textContent = allMasterData.length;
             document.getElementById('totalItems').textContent = allImpactData.reduce((sum, d) => sum + (d.item_count || 0), 0);
-            
+
             const avgVol = allImpactData.length > 0 
                 ? (allImpactData.reduce((sum, d) => sum + (d.cost_volatility_pct || 0), 0) / allImpactData.length).toFixed(2)
                 : '0';
             document.getElementById('avgVolatility').textContent = avgVol + '%';
-            
-            const highRisk = allImpactData.filter(d => d.risk_level === 'High').length;
+
+            // use master data to count high-risk commodities
+            const highRisk = allMasterData.filter(m => m.Risk_Level === 'High').length;
             document.getElementById('riskCommodities').textContent = highRisk;
             
             // Populate commodity filter
@@ -639,13 +638,14 @@
         }
 
         function updateRiskChart() {
-            if (!allImpactData || allImpactData.length === 0) return;
+            if (!allMasterData || allMasterData.length === 0) return;
             
-            // Count by risk level
+            // Count by risk level using master data (impact dataset may not include risk)
             const riskCounts = { 'High': 0, 'Medium': 0, 'Low': 0 };
-            allImpactData.forEach(item => {
-                if (riskCounts.hasOwnProperty(item.risk_level)) {
-                    riskCounts[item.risk_level]++;
+            allMasterData.forEach(item => {
+                const r = item.Risk_Level || 'Low';
+                if (riskCounts.hasOwnProperty(r)) {
+                    riskCounts[r]++;
                 }
             });
             
@@ -714,18 +714,27 @@
             const filtered = getFilteredData();
             tbody.innerHTML = '';
             
+            // build a lookup from master data for risk and drivers
+            const masterMap = {};
+            allMasterData.forEach(m => {
+                masterMap[m.Commodity_Name] = m;
+            });
+
             filtered.forEach(item => {
-                const row = document.createElement('tr');
-                const riskColor = item.risk_level === 'High' ? '#fa709a' : 
-                                 item.risk_level === 'Medium' ? '#f5a623' : '#43e97b';
-                
+                const master = masterMap[item.commodity_name] || {};
+                const risk = master.Risk_Level || '-';
+                const drivers = master.Key_Drivers || '-';
+                const riskColor = risk === 'High' ? '#fa709a' : 
+                                 risk === 'Medium' ? '#f5a623' : '#43e97b';
+
+                row = document.createElement('tr');
                 row.innerHTML = `
                     <td><strong>${item.commodity_name}</strong></td>
                     <td class="number">${item.item_count || 0}</td>
                     <td class="number"><strong>${(item.impact_score || 0).toFixed(2)}</strong></td>
                     <td class="number">${(item.cost_volatility_pct || 0).toFixed(2)}%</td>
-                    <td style="color: ${riskColor}; font-weight: bold;">${item.risk_level || '-'}</td>
-                    <td>${item.key_drivers || '-'}</td>
+                    <td style="color: ${riskColor}; font-weight: bold;">${risk}</td>
+                    <td>${drivers}</td>
                 `;
                 tbody.appendChild(row);
             });
